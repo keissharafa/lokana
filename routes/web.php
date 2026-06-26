@@ -179,9 +179,32 @@ Route::get('/artikel/umkm-bali', function () {
 
 // EVENT
 Route::get('/event', function () {
-    return view('event');
+    return view('event_tiket');
 })->name('event');
 
+Route::get('/event/tiket-a', function () {
+    return view('detail_tiket.tiket_a');
+})->name('event.tiket_a');
+
+Route::get('/event/tiket-b', function () {
+    return view('detail_tiket.tiket_b');
+})->name('event.tiket_b');
+
+Route::get('/event/tiket-c', function () {
+    return view('detail_tiket.tiket_c');
+})->name('event.tiket_c');
+
+Route::get('/event/tiket-d', function () {
+    return view('detail_tiket.tiket_d');
+})->name('event.tiket_d');
+
+Route::get('/event/tiket-e', function () {
+    return view('detail_tiket.tiket_e');
+})->name('event.tiket_e');
+
+Route::get('/event/tiket-f', function () {
+    return view('detail_tiket.tiket_f');
+})->name('event.tiket_f');
 
 // ADMIN LOGIN REDIRECT
 Route::get('/admin/login', function () {
@@ -224,7 +247,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             return redirect()->route('login');
         }
 
-        return view('admin.kelola-artikel');
+        return view('admin.kelola_artikel');
     })->name('artikel');
 
     Route::get('/kelola-pengguna', function () {
@@ -232,7 +255,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             return redirect()->route('login');
         }
 
-        return view('admin.kelola-pengguna');
+        return view('admin.kelola_pengguna');
     })->name('pengguna');
 
     Route::get('/kelola-transaksi', function () {
@@ -240,6 +263,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
             return redirect()->route('login');
         }
 
-        return view('admin.kelola-transaksi');
+        return view('admin.kelola_transaksi');
     })->name('transaksi');
 });
