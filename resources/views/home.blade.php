@@ -784,6 +784,7 @@
     <li><a href="{{ route('produk') }}" class="{{ request()->routeIs('produk') ? 'active' : '' }}">Produk Lokal</a></li>
     <li><a href="{{ route('event') }}" class="{{ request()->routeIs('event') ? 'active' : '' }}">Event &amp; Tiket</a></li>
     <li><a href="{{ route('artikel') }}" class="{{ request()->routeIs('artikel') || request()->routeIs('artikel.*') ? 'active' : '' }}">Artikel Lokal</a></li>
+    <li><a href="{{ route('history') }}">History</a></li>
   </ul>
 
   <div class="nav-actions">
@@ -805,6 +806,7 @@
   <a href="{{ route('produk') }}" class="{{ request()->routeIs('produk') ? 'active' : '' }}">Produk Lokal</a>
   <a href="{{ route('event') }}" class="{{ request()->routeIs('event') ? 'active' : '' }}">Event &amp; Tiket</a>
   <a href="{{ route('artikel') }}" class="{{ request()->routeIs('artikel') || request()->routeIs('detail-artikel') ? 'active' : '' }}">Artikel Lokal</a>
+  <a href="{{ route('history') }}" class="{{ request()->routeIs('history') ? 'active' : '' }}">History</a>
   <div class="mobile-menu-divider"></div>
   <a href="{{ route('keranjang') }}">Keranjang</a>
   <a href="{{ route('login') }}">Login / Akun Saya</a>

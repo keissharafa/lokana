@@ -182,9 +182,9 @@ Route::get('/event', function () {
     return view('event_tiket');
 })->name('event');
 
-Route::get('/event/tiket-a', function () {
-    return view('detail_tiket.tiket_a');
-})->name('event.tiket_a');
+Route::get('/event/pesta-kesenian-bali', function () {
+    return view('detail_tiket.tiket_pesta_kesenian_bali');
+})->name('event.tiket_pesta_kesenian_bali');
 
 Route::get('/event/tiket-b', function () {
     return view('detail_tiket.tiket_b');

@@ -605,6 +605,7 @@
     <li><a href="{{ route('produk') }}" class="active">Produk Lokal</a></li>
     <li><a href="{{ route('event') }}">Event &amp; Tiket</a></li>
     <li><a href="{{ route('artikel') }}">Artikel Lokal</a></li>
+    <li><a href="{{ route('history') }}">History</a></li>
   </ul>
 
   <div class="nav-actions">
@@ -630,11 +631,11 @@
   <a href="{{ route('produk') }}" class="active">Produk Lokal</a>
   <a href="{{ route('event') }}">Event &amp; Tiket</a>
   <a href="{{ route('artikel') }}">Artikel Lokal</a>
-
+  <a href="{{ route('history') }}">History</a>
   <div class="mobile-menu-divider"></div>
 
   <a href="{{ route('keranjang') }}">Keranjang</a>
-  <a href="#">Akun Saya</a>
+  <a href="{{ route('login') }}">Akun Saya</a>
 </div>
 
 <!-- PRODUK PAGE -->

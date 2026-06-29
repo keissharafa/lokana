@@ -430,6 +430,7 @@
     <li><a href="{{ route('produk') }}">Produk Lokal</a></li>
     <li><a href="{{ route('event') }}">Event &amp; Tiket</a></li>
     <li><a href="{{ route('artikel') }}" class="active">Artikel Lokal</a></li>
+      <a href="{{ route('history') }}">History</a>
   </ul>
 
   <div class="nav-actions">
@@ -437,7 +438,7 @@
       <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
     </a>
 
-    <a href="#" aria-label="Akun">
+    <a href="{{ route('login') }}" aria-label="Akun">
       <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
     </a>
 
@@ -455,6 +456,7 @@
   <a href="{{ route('produk') }}">Produk Lokal</a>
   <a href="{{ route('event') }}">Event &amp; Tiket</a>
   <a href="{{ route('artikel') }}" class="active">Artikel Lokal</a>
+  <a href="{{ route('history') }}">History</a>
 
   <div class="mobile-menu-divider"></div>
 

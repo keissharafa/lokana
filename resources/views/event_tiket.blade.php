@@ -625,6 +625,7 @@
     <li><a href="{{ route('produk') }}">Produk Lokal</a></li>
     <li><a href="{{ route('event') }}" class="active">Event &amp; Tiket</a></li>
     <li><a href="{{ route('artikel') }}">Artikel Lokal</a></li>
+    <li><a href="{{ route('history') }}">History</a></li>
   </ul>
 
   <div class="nav-actions">
@@ -654,7 +655,7 @@
   <div class="mobile-menu-divider"></div>
 
   <a href="{{ route('keranjang') }}">Keranjang</a>
-  <a href="#">Akun Saya</a>
+  <a href="{{ route('login') }}">Akun Saya</a>
 </div>
 
 <!-- EVENT & TIKET PAGE -->
@@ -694,7 +695,7 @@
 
   <section class="product-grid">
 
-    <div class="product-card" onclick="window.location.href='{{ route('event.tiket_a') }}'">
+    <div class="product-card" onclick="window.location.href='{{ route('event.tiket_pesta_kesenian_bali') }}'">
       <img class="product-img" src="https://i.pinimg.com/736x/fb/6b/54/fb6b54371c86c497c1d363cb4c9b495d.jpg" alt="Pesta Kesenian Bali"/>
 
       <div class="product-info">

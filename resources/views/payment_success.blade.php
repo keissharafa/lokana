@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pembayaran Berhasil - Lokana</title>
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
@@ -59,8 +58,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.4rem;
-      font-weight: 800;
+    }
+
+    .success-icon svg {
+      width: 36px;
+      height: 36px;
+      stroke: var(--green);
+      stroke-width: 2.5;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .success-label {
@@ -111,9 +118,7 @@
       border-bottom: 1px solid rgba(232, 227, 220, 0.8);
     }
 
-    .order-row:first-child {
-      padding-top: 0;
-    }
+    .order-row:first-child { padding-top: 0; }
 
     .order-row:last-child {
       padding-bottom: 0;
@@ -124,6 +129,13 @@
 
     .order-row span:last-child {
       text-align: right;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .order-row:last-child span:last-child {
+      color: var(--purple);
+      font-weight: 800;
     }
 
     .success-actions {
@@ -141,7 +153,7 @@
       text-decoration: none;
       font-size: 0.9rem;
       font-weight: 800;
-      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
     }
 
     .btn-primary {
@@ -183,7 +195,11 @@
       .success-icon {
         width: 72px;
         height: 72px;
-        font-size: 2rem;
+      }
+
+      .success-icon svg {
+        width: 30px;
+        height: 30px;
       }
 
       .order-row {
@@ -196,7 +212,11 @@
 <body>
 
   <main class="success-card">
-    <div class="success-icon">✓</div>
+    <div class="success-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
 
     <div class="success-label">Payment Success</div>
 
@@ -209,27 +229,23 @@
     <div class="order-box">
       <div class="order-row">
         <span>No. Pesanan</span>
-        <span>LKN-2026-001</span>
+        <span id="row-order-id">-</span>
       </div>
-
       <div class="order-row">
-        <span>Produk</span>
-        <span>Scarf Endek Bali Handmade</span>
+        <span>Item</span>
+        <span id="row-items">-</span>
       </div>
-
       <div class="order-row">
-        <span>Metode Pembayaran</span>
-        <span>Virtual Account</span>
+        <span>Tanggal</span>
+        <span id="row-date">-</span>
       </div>
-
       <div class="order-row">
         <span>Status</span>
-        <span>Pembayaran Berhasil</span>
+        <span id="row-status">Pembayaran Berhasil</span>
       </div>
-
       <div class="order-row">
         <span>Total Pembayaran</span>
-        <span>Rp 270.000</span>
+        <span id="row-total">-</span>
       </div>
     </div>
 
@@ -243,5 +259,58 @@
     </p>
   </main>
 
+  <script src="{{ asset('js/cart.js') }}"></script>
+  <script>
+    (function () {
+      const cart = getCart();
+
+      // Guard: kalau cart sudah kosong dan tidak ada latest order,
+      // berarti halaman diakses langsung — redirect ke home
+      const latest = getLatestOrder();
+      if ((!cart || cart.length === 0) && !latest) {
+        window.location.href = '{{ route("home") }}';
+        return;
+      }
+
+      // Kalau cart masih ada isinya, proses: simpan ke history lalu clear
+      if (cart && cart.length > 0) {
+        const subtotal = getCartSubtotal();
+        const ongkir   = cartHasPhysicalProduct() ? 20000 : 0;
+        const total    = subtotal + ongkir;
+        const orderId  = generateOrderNumber();
+
+        saveToHistory({
+          id:        orderId,
+          items:     cart,
+          subtotal:  subtotal,
+          ongkir:    ongkir,
+          total:     total,
+          tanggal:   new Date().toISOString(),
+          status:    'Pembayaran Berhasil',
+        });
+
+        clearCart();
+      }
+
+      // Render dari latest order yang sudah disimpan
+      const order = getLatestOrder();
+      if (!order) return;
+
+      const itemCount    = order.items.reduce((acc, i) => acc + i.qty, 0);
+      const namaItem     = order.items.length === 1
+        ? order.items[0].nama
+        : `${itemCount} item (${order.items.map(i => i.nama).join(', ')})`;
+
+      const tgl = new Date(order.tanggal);
+      const tglStr = tgl.toLocaleDateString('id-ID', {
+        day: '2-digit', month: 'long', year: 'numeric'
+      });
+
+      document.getElementById('row-order-id').textContent = order.id;
+      document.getElementById('row-items').textContent    = namaItem;
+      document.getElementById('row-date').textContent     = tglStr;
+      document.getElementById('row-total').textContent    = formatRupiah(order.total);
+    })();
+  </script>
 </body>
 </html>

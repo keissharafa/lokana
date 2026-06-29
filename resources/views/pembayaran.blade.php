@@ -77,6 +77,8 @@
       align-items: center;
       gap: 14px;
       cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      user-select: none;
     }
 
     .payment-option.active {
@@ -87,8 +89,14 @@
     .dot {
       width: 18px;
       height: 18px;
+      flex-shrink: 0;
       border-radius: 50%;
-      border: 5px solid var(--purple);
+      border: 5px solid #ddd;
+      transition: border-color 0.15s;
+    }
+
+    .payment-option.active .dot {
+      border-color: var(--purple);
     }
 
     .payment-option h3 {
@@ -101,35 +109,63 @@
       color: var(--muted);
     }
 
-    .total-box {
+    .divider {
+      height: 1px;
+      background: var(--border);
       margin: 28px 0;
-      padding: 20px;
-      border-radius: 18px;
-      background: var(--light-bg);
-      display: flex;
-      justify-content: space-between;
-      font-weight: 800;
     }
 
-    .total-box span:last-child {
+    .total-breakdown {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .total-row.main {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text);
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+    }
+
+    .total-row.main span:last-child {
       color: var(--purple);
     }
 
     .btn-finish {
       display: flex;
+      width: 100%;
       height: 50px;
       border-radius: 999px;
       align-items: center;
       justify-content: center;
       background: var(--purple);
       color: var(--white);
-      text-decoration: none;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem;
       font-weight: 800;
+      border: none;
+      cursor: pointer;
       box-shadow: 0 12px 30px rgba(91,63,217,0.28);
+      transition: background 0.15s;
     }
 
     .btn-finish:hover {
       background: var(--purple-dark);
+    }
+
+    .btn-finish:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
   </style>
 </head>
@@ -144,7 +180,7 @@
     <h1>Pembayaran</h1>
     <p class="subtitle">Pilih metode pembayaran untuk menyelesaikan pesananmu.</p>
 
-    <div class="payment-option active">
+    <div class="payment-option active" onclick="selectPayment(this)">
       <div class="dot"></div>
       <div>
         <h3>Transfer Bank Virtual Account</h3>
@@ -152,30 +188,88 @@
       </div>
     </div>
 
-    <div class="payment-option">
-      <div class="dot" style="border-color:#ddd;"></div>
+    <div class="payment-option" onclick="selectPayment(this)">
+      <div class="dot"></div>
       <div>
         <h3>E-Wallet</h3>
         <p>OVO / DANA / GoPay / ShopeePay</p>
       </div>
     </div>
 
-    <div class="payment-option">
-      <div class="dot" style="border-color:#ddd;"></div>
+    <div class="payment-option" onclick="selectPayment(this)">
+      <div class="dot"></div>
       <div>
         <h3>QRIS</h3>
         <p>Scan QR dari aplikasi pembayaran favoritmu</p>
       </div>
     </div>
 
-    <div class="total-box">
-      <span>Total Pembayaran</span>
-      <span>Rp 270.000</span>
+    <div class="divider"></div>
+
+    <div class="total-breakdown">
+      <div class="total-row">
+        <span>Subtotal</span>
+        <span id="subtotal-val">-</span>
+      </div>
+      <div class="total-row" id="ongkir-row">
+        <span>Ongkos Kirim</span>
+        <span id="ongkir-val">-</span>
+      </div>
+      <div class="total-row main">
+        <span>Total Pembayaran</span>
+        <span id="total-val">-</span>
+      </div>
     </div>
 
-    <a href="{{ route('payment.success') }}" class="btn-finish">Bayar Sekarang</a>
+    <button type="button" class="btn-finish" id="btn-bayar" onclick="handleBayar()">
+      Bayar Sekarang
+    </button>
   </div>
 </main>
 
+<script src="{{ asset('js/cart.js') }}"></script>
+<script>
+  // Guard: redirect jika cart kosong
+  (function() {
+    const cart = getCart();
+    if (!cart || cart.length === 0) {
+      window.location.href = '{{ route("keranjang") }}';
+    }
+  })();
+
+  // Render total dari localStorage
+  function renderTotal() {
+    const subtotal = getCartSubtotal();
+    const ongkir  = cartHasPhysicalProduct() ? 20000 : 0;
+    const total   = subtotal + ongkir;
+
+    document.getElementById('subtotal-val').textContent = formatRupiah(subtotal);
+    document.getElementById('ongkir-val').textContent   = ongkir > 0 ? formatRupiah(ongkir) : 'Gratis';
+    document.getElementById('total-val').textContent    = formatRupiah(total);
+
+    // Sembunyikan baris ongkir kalau tiket-only
+    document.getElementById('ongkir-row').style.display = ongkir === 0 ? 'none' : 'flex';
+  }
+
+  // Toggle active payment option
+  function selectPayment(el) {
+    document.querySelectorAll('.payment-option').forEach(opt => opt.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  // Klik bayar → redirect ke payment success
+  function handleBayar() {
+    const btn = document.getElementById('btn-bayar');
+    btn.disabled = true;
+    btn.textContent = 'Memproses...';
+
+    // Simulasi proses singkat sebelum redirect
+    setTimeout(() => {
+      window.location.href = '{{ route("payment.success") }}';
+    }, 800);
+  }
+
+  renderTotal();
+</script>
 </body>
 </html>

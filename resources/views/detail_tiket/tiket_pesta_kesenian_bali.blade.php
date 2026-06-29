@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Scarf Endek Bali Handmade - Lokana</title>
+  <title>Pesta Kesenian Bali - Lokana</title>
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>"/>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
@@ -263,11 +263,25 @@
     .rating-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 14px;
       align-items: center;
       color: var(--muted);
       font-size: 0.86rem;
       margin-bottom: 24px;
+    }
+
+    .rating-row span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .rating-row svg {
+      width: 15px;
+      height: 15px;
+      stroke: var(--muted);
+      fill: none;
+      stroke-width: 1.8;
     }
 
     .rating { color: var(--gold); font-weight: 800; }
@@ -316,6 +330,26 @@
       border-color: var(--purple);
       background: #f3f0ff;
     }
+
+    .date-input {
+      width: fit-content;
+      padding: 10px 16px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--white);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .date-input:focus,
+    .date-input:hover { border-color: var(--purple); }
+
+    .date-input.invalid { border-color: #e0554f; }
 
     .quantity-box {
       display: inline-flex;
@@ -385,7 +419,7 @@
       transform: translateY(-2px);
     }
 
-    /* Toast notifikasi */
+    /* Toast */
     .toast {
       position: fixed;
       bottom: 28px;
@@ -548,8 +582,8 @@
 
   <ul class="nav-links">
     <li><a href="{{ route('home') }}">Home</a></li>
-    <li><a href="{{ route('produk') }}" class="active">Produk Lokal</a></li>
-    <li><a href="{{ route('event') }}">Event &amp; Tiket</a></li>
+    <li><a href="{{ route('produk') }}">Produk Lokal</a></li>
+    <li><a href="{{ route('event') }}" class="active">Event &amp; Tiket</a></li>
     <li><a href="{{ route('artikel') }}">Artikel Lokal</a></li>
   </ul>
 
@@ -568,8 +602,8 @@
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="{{ route('home') }}">Home</a>
-  <a href="{{ route('produk') }}" class="active">Produk Lokal</a>
-  <a href="{{ route('event') }}">Event &amp; Tiket</a>
+  <a href="{{ route('produk') }}">Produk Lokal</a>
+  <a href="{{ route('event') }}" class="active">Event &amp; Tiket</a>
   <a href="{{ route('artikel') }}">Artikel Lokal</a>
   <div class="mobile-menu-divider"></div>
   <a href="{{ route('keranjang') }}">Keranjang</a>
@@ -581,54 +615,72 @@
     <div class="breadcrumb">
       <a href="{{ route('home') }}">Home</a>
       <span>/</span>
-      <a href="{{ route('produk') }}">Produk Lokal</a>
+      <a href="{{ route('event') }}">Event &amp; Tiket</a>
       <span>/</span>
-      <span>Scarf Endek Bali</span>
+      <span>Pesta Kesenian Bali</span>
     </div>
 
     <section class="product-detail-card">
       <div class="product-gallery">
         <img
           class="main-product-img"
-          src="https://i.pinimg.com/736x/a9/21/78/a921780c8edefc5cb5741a3cbbfc46c0.jpg"
-          alt="Scarf Endek Bali Handmade"
+          src="https://i.pinimg.com/736x/fb/6b/54/fb6b54371c86c497c1d363cb4c9b495d.jpg"
+          alt="Pesta Kesenian Bali"
         >
         <div class="thumbnail-row">
-          <img src="https://i.pinimg.com/736x/a9/21/78/a921780c8edefc5cb5741a3cbbfc46c0.jpg" alt="Detail motif scarf endek">
-          <img src="https://i.pinimg.com/1200x/71/64/04/716404ae798ba8c4f8b98762a31b97ca.jpg" alt="Kain Endek Bali">
-          <img src="https://i.pinimg.com/736x/bf/2b/05/bf2b05a0e35df8221f168152b442ce2f.jpg" alt="Produk fashion Bali">
+          <img src="https://i.pinimg.com/1200x/6d/72/45/6d7245db6b5cd339df2501b55cd99b18.jpg" alt="Pertunjukan tari Pesta Kesenian Bali">
+          <img src="https://i.pinimg.com/1200x/7c/a0/45/7ca04566d0b2befff16179633c86b732.jpg" alt="Gamelan Bali">
+          <img src="https://i.pinimg.com/1200x/75/1a/88/751a8877f53a95786c877e44076041b9.jpg" alt="Kerajinan budaya Bali">
         </div>
       </div>
 
       <div class="product-detail-info">
-        <span class="product-category">Fashion Lokal</span>
+        <span class="product-category">Seni &amp; Budaya</span>
 
-        <h1>Scarf Endek Bali Handmade</h1>
+        <h1>Pesta Kesenian Bali</h1>
 
         <p class="product-subtitle">
-          Scarf berbasis kain Endek dengan motif clean dan warna yang mudah dipadukan. Cocok buat kamu yang suka sentuhan lokal, tapi tetap ingin look yang rapi dan modern.
+          Festival seni dan budaya terbesar di Bali yang berlangsung sebulan penuh di Taman Werdhi Budaya Art Centre, Denpasar. Menampilkan tari tradisional, gamelan, pawai budaya, dan kerajinan dari seluruh penjuru pulau.
         </p>
 
         <div class="rating-row">
-          <span class="rating">★ 4.8</span>
-          <span>120 terjual</span>
-          <span>Stok tersedia</span>
+          <span>
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            13 Jun – 11 Jul 2026
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Taman Werdhi Budaya, Denpasar
+          </span>
+          <span class="rating">★ 4.9</span>
         </div>
 
-        <div class="price" id="productPrice" data-price="250000">Rp 250.000</div>
+        <div class="price" id="ticketPrice">Rp 75.000</div>
 
         <div class="product-options">
           <div class="option-group">
-            <label>Pilihan Warna</label>
-            <div class="option-pills" id="colorPills">
-              <button class="option-pill active" type="button" data-warna="Blue Sand">Blue Sand</button>
-              <button class="option-pill" type="button" data-warna="Rose Clay">Rose Clay</button>
-              <button class="option-pill" type="button" data-warna="Natural Cream">Natural Cream</button>
+            <label>Jenis Tiket</label>
+            <div class="option-pills" id="tierPills">
+              <button class="option-pill active" type="button"
+                data-tier="Reguler" data-harga="75000">Reguler — Rp 75.000</button>
+              <button class="option-pill" type="button"
+                data-tier="VIP" data-harga="200000">VIP — Rp 200.000</button>
             </div>
           </div>
 
           <div class="option-group">
-            <label>Jumlah</label>
+            <label>Tanggal Kunjungan</label>
+            <input
+              type="date"
+              id="visitDate"
+              class="date-input"
+              min="2026-06-13"
+              max="2026-07-11"
+            >
+          </div>
+
+          <div class="option-group">
+            <label>Jumlah Tiket</label>
             <div class="quantity-box">
               <button type="button" id="decreaseQty">−</button>
               <span id="quantityValue">1</span>
@@ -643,24 +695,24 @@
         </div>
 
         <div class="info-list">
-          <div class="info-item"><strong>Kategori</strong><span>Fashion Lokal</span></div>
-          <div class="info-item"><strong>Material</strong><span>Kain Endek pilihan</span></div>
-          <div class="info-item"><strong>Estimasi Kirim</strong><span>2–4 hari kerja</span></div>
-          <div class="info-item"><strong>Asal Produk</strong><span>Bali, Indonesia</span></div>
+          <div class="info-item"><strong>Kategori</strong><span>Seni &amp; Budaya</span></div>
+          <div class="info-item"><strong>Tanggal</strong><span>13 Jun – 11 Jul 2026</span></div>
+          <div class="info-item"><strong>Lokasi</strong><span>Taman Werdhi Budaya, Denpasar</span></div>
+          <div class="info-item"><strong>Tiket Berlaku</strong><span>1x masuk per tanggal pilihan</span></div>
         </div>
       </div>
     </section>
 
     <section class="story-section">
       <div class="story-card">
-        <span>Cerita Produk</span>
-        <h2>Detail lokal yang tetap mudah dipakai</h2>
-        <p>Scarf ini dipilih karena punya karakter visual yang kuat tanpa terasa berlebihan. Motif Endek memberi sentuhan lokal, sementara warna dan ukurannya tetap fleksibel untuk dipakai harian.</p>
+        <span>Tentang Event</span>
+        <h2>Perayaan budaya Bali dalam satu rangkaian acara</h2>
+        <p>Pesta Kesenian Bali menghadirkan ratusan pertunjukan tari, musik gamelan, pawai budaya, dan pameran kerajinan dari seluruh kabupaten di Bali. Cocok untuk yang ingin merasakan langsung kekayaan seni dan tradisi pulau ini.</p>
       </div>
       <div class="shipping-card">
-        <span>Catatan Belanja</span>
-        <h2>Cocok untuk hadiah atau koleksi pribadi</h2>
-        <p>Produk ini pas untuk pengguna yang mencari oleh-oleh Bali dengan fungsi jelas. Bukan hanya pajangan, tapi bisa langsung dipakai untuk styling kasual, semi-formal, atau sebagai aksesori perjalanan.</p>
+        <span>Catatan Tiket</span>
+        <h2>Informasi penting sebelum datang</h2>
+        <p>Tiket berlaku untuk satu kali masuk pada tanggal yang dipilih saat checkout. Tiket VIP mendapat akses ke area duduk terbaik di area pertunjukan utama. Datang lebih awal disarankan karena beberapa pertunjukan populer cepat penuh.</p>
       </div>
     </section>
   </div>
@@ -714,18 +766,30 @@
     });
   }
 
-  /* ── state produk ──────────────────────────────────────── */
-  const BASE_PRICE = 250000;
+  /* ── state tiket ───────────────────────────────────────── */
+  let selectedTier = 'Reguler';
+  let selectedHarga = 75000;
   let quantity = 1;
-  let selectedWarna = 'Blue Sand';
 
-  const productPriceEl = document.getElementById('productPrice');
+  const ticketPriceEl = document.getElementById('ticketPrice');
   const quantityValueEl = document.getElementById('quantityValue');
+  const visitDateEl = document.getElementById('visitDate');
 
   function updatePriceDisplay() {
-    productPriceEl.textContent = formatRupiah(BASE_PRICE * quantity);
+    ticketPriceEl.textContent = formatRupiah(selectedHarga * quantity);
     quantityValueEl.textContent = quantity;
   }
+
+  /* tier pills */
+  document.querySelectorAll('#tierPills .option-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('#tierPills .option-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      selectedTier = pill.dataset.tier;
+      selectedHarga = parseInt(pill.dataset.harga);
+      updatePriceDisplay();
+    });
+  });
 
   /* qty */
   document.getElementById('increaseQty').addEventListener('click', () => {
@@ -737,14 +801,21 @@
     if (quantity > 1) { quantity--; updatePriceDisplay(); }
   });
 
-  /* warna */
-  document.querySelectorAll('#colorPills .option-pill').forEach(pill => {
-    pill.addEventListener('click', () => {
-      document.querySelectorAll('#colorPills .option-pill').forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-      selectedWarna = pill.dataset.warna;
-    });
+  /* tanggal: hapus invalid saat diisi */
+  visitDateEl.addEventListener('change', () => {
+    visitDateEl.classList.remove('invalid');
   });
+
+  /* ── validasi tanggal ──────────────────────────────────── */
+  function validateDate() {
+    if (!visitDateEl.value) {
+      visitDateEl.classList.add('invalid');
+      visitDateEl.focus();
+      showToast('Pilih tanggal kunjungan dulu, ya.');
+      return false;
+    }
+    return true;
+  }
 
   /* ── toast helper ──────────────────────────────────────── */
   const toastEl = document.getElementById('toast');
@@ -757,32 +828,45 @@
     toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2200);
   }
 
-  /* ── tambah ke keranjang ───────────────────────────────── */
+  /* ── format tanggal untuk display ─────────────────────── */
+  function formatTanggal(isoDate) {
+    if (!isoDate) return '';
+    const [y, m, d] = isoDate.split('-');
+    const bulan = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agt','Sep','Okt','Nov','Des'];
+    return `${parseInt(d)} ${bulan[parseInt(m) - 1]} ${y}`;
+  }
+
+  /* ── build item tiket ──────────────────────────────────── */
   function buildItem() {
     return {
-      id: 'scarf-endek-bali',
-      nama: 'Scarf Endek Bali Handmade',
-      kategori: 'produk',
-      harga: BASE_PRICE,
+      id: 'tiket-pesta-kesenian-bali',
+      nama: 'Pesta Kesenian Bali',
+      kategori: 'tiket',
+      harga: selectedHarga,
       qty: quantity,
-      gambar: 'https://i.pinimg.com/736x/a9/21/78/a921780c8edefc5cb5741a3cbbfc46c0.jpg',
-      varian: selectedWarna,
-      tier: null,
-      tanggalEvent: null,
+      gambar: 'https://i.pinimg.com/736x/fb/6b/54/fb6b54371c86c497c1d363cb4c9b495d.jpg',
+      varian: null,
+      tier: selectedTier,
+      tanggalEvent: formatTanggal(visitDateEl.value),
     };
   }
 
-  document.getElementById('addToCartBtn').addEventListener('click', () => {
+  // tiket (& produk sama persis, ganti nama produknya)
+document.getElementById('addToCartBtn').addEventListener('click', () => {
+  if (!validateDate()) return;   // khusus tiket, produk tidak perlu ini
+
   addToCart(buildItem());
 
+  // Feedback visual — cegah double-add
   const btn = document.getElementById('addToCartBtn');
   btn.textContent = '✓ Ditambahkan';
   btn.disabled = true;
   btn.style.opacity = '0.6';
   btn.style.cursor = 'default';
 
-  showToast('✓ Scarf Endek ditambahkan ke keranjang');
+  showToast('✓ Ditambahkan ke keranjang');
 
+  // Reset setelah 2 detik kalau user mau ganti opsi dan tambah lagi
   setTimeout(() => {
     btn.textContent = 'Tambah ke Keranjang';
     btn.disabled = false;
@@ -791,7 +875,9 @@
   }, 2000);
 });
 
+  /* ── tombol beli sekarang ──────────────────────────────── */
   document.getElementById('buyNowBtn').addEventListener('click', () => {
+    if (!validateDate()) return;
     addToCart(buildItem());
     window.location.href = "{{ route('keranjang') }}";
   });
