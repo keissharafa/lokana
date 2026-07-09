@@ -11,26 +11,29 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --purple: #5B3FD9;
-      --purple-dark: #4730B3;
-      --text: #1a1a1a;
-      --muted: #666;
-      --light-bg: #f9f7f4;
+      --primary-black: #111111;
+      --text-main: #1a1a1a;
+      --muted: #767676;
+      --light-bg: #fdfdfd;
+      --body-bg: #f7f7f7;
       --white: #fff;
-      --border: #e8e3dc;
-      --green: #1f9d5a;
-      --green-bg: #eaf8f0;
-      --orange: #c9851b;
-      --orange-bg: #fff4df;
+      --border-thin: #eaeaea;
+      --green: #1b5e20;
+      --green-bg: #e8f5e9;
+      --orange: #a05c00;
+      --orange-bg: #fff3e0;
+      --red: #880e4f;
+      --red-bg: #fce4ec;
     }
 
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--light-bg);
-      color: var(--text);
+      background: var(--body-bg);
+      color: var(--text-main);
       overflow-x: hidden;
     }
 
+    /* ── NAV BAR ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -39,7 +42,7 @@
       padding: 0 48px;
       background: rgba(255,255,255,0.95);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0,0,0,0.06);
+      border-bottom: 1px solid var(--border-thin);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -48,7 +51,7 @@
     .nav-brand {
       font-size: 1.15rem;
       font-weight: 800;
-      color: var(--text);
+      color: var(--text-main);
       text-decoration: none;
       letter-spacing: -0.02em;
     }
@@ -68,28 +71,25 @@
     }
 
     .nav-links a:hover,
-    .nav-links a.active { color: var(--purple); }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
+    .nav-links a.active { color: var(--primary-black); }
 
     .nav-actions a {
       color: var(--muted);
       text-decoration: none;
       font-size: 0.84rem;
       font-weight: 700;
+      transition: color 0.2s;
     }
+    .nav-actions a:hover { color: var(--primary-black); }
 
+    /* ── LAYOUT STRUCTURE ── */
     .history-page {
       min-height: 100vh;
       padding: 128px 48px 72px;
     }
 
     .history-wrap {
-      max-width: 1120px;
+      max-width: 1040px;
       margin: 0 auto;
     }
 
@@ -98,61 +98,96 @@
       justify-content: space-between;
       gap: 32px;
       align-items: flex-end;
-      margin-bottom: 34px;
+      margin-bottom: 40px;
     }
 
     .history-title h1 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
       font-weight: 800;
-      letter-spacing: -0.05em;
-      margin-bottom: 12px;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
     }
 
     .history-title p {
-      max-width: 560px;
+      max-width: 520px;
       color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.7;
+      font-size: 0.9rem;
+      line-height: 1.6;
     }
 
     .history-filter {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap;
-      justify-content: flex-end;
     }
 
+    /* Fully Rounded UI Element */
     .pill {
-      padding: 9px 18px;
-      border: 1px solid var(--border);
+      padding: 10px 22px;
+      border: 1px solid var(--border-thin);
       border-radius: 999px;
       background: var(--white);
       color: var(--muted);
       font-size: 0.82rem;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s;
-      border: 1px solid var(--border);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .pill.active,
     .pill:hover {
-      color: var(--purple);
-      border-color: var(--purple);
-      background: #f3f0ff;
+      color: var(--white);
+      border-color: var(--primary-black);
+      background: var(--primary-black);
     }
 
+    /* ── SUMMARY STRIP ── */
+    .summary-strip {
+      margin-bottom: 32px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .summary-box {
+      background: var(--white);
+      border: 1px solid var(--border-thin);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .summary-box span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .summary-box strong {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    /* ── STACKED TRANSACTION CARD ── */
     .transaction-list {
       display: grid;
-      gap: 18px;
+      gap: 20px;
     }
 
     .transaction-card {
       background: var(--white);
-      border: 1px solid rgba(232, 227, 220, 0.85);
-      border-radius: 24px;
-      padding: 24px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.045);
+      border: 1px solid var(--border-thin);
+      border-radius: 16px;
+      padding: 28px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .transaction-card:hover {
+      box-shadow: 0 12px 32px rgba(0,0,0,0.04);
     }
 
     .transaction-card[data-hidden="true"] { display: none; }
@@ -161,62 +196,66 @@
       display: flex;
       justify-content: space-between;
       gap: 24px;
-      align-items: flex-start;
-      padding-bottom: 18px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 18px;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-thin);
+      margin-bottom: 20px;
     }
 
     .transaction-code {
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       color: var(--muted);
-      margin-bottom: 6px;
     }
 
-    .transaction-code strong { color: var(--text); }
+    .transaction-code strong { color: var(--text-main); }
 
     .transaction-date {
       font-size: 0.82rem;
       color: var(--muted);
     }
 
+    /* Functional Soft Accent Badges */
     .status {
-      padding: 8px 14px;
+      padding: 6px 14px;
       border-radius: 999px;
-      font-size: 0.76rem;
-      font-weight: 800;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
       white-space: nowrap;
     }
 
     .status.success { color: var(--green); background: var(--green-bg); }
     .status.process { color: var(--orange); background: var(--orange-bg); }
-    .status.cancelled { color: #b91c1c; background: #fef2f2; }
+    .status.cancelled { color: var(--red); background: var(--red-bg); }
 
     .transaction-body {
       display: grid;
       grid-template-columns: 86px 1fr auto;
-      gap: 18px;
+      gap: 24px;
       align-items: center;
     }
 
+    /* Soft Rounded Thumbnail */
     .transaction-body img {
       width: 86px;
       height: 86px;
       object-fit: cover;
-      border-radius: 16px;
-      background: #eee;
+      border-radius: 12px;
+      border: 1px solid var(--border-thin);
     }
 
     .product-info h3 {
-      font-size: 1rem;
-      margin-bottom: 7px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 6px;
       letter-spacing: -0.01em;
     }
 
     .product-info p {
       color: var(--muted);
-      font-size: 0.84rem;
-      line-height: 1.55;
+      font-size: 0.85rem;
+      line-height: 1.5;
     }
 
     .transaction-price { text-align: right; }
@@ -229,148 +268,132 @@
     }
 
     .transaction-price strong {
-      color: var(--purple);
-      font-size: 1.05rem;
+      color: var(--text-main);
+      font-size: 1.15rem;
+      font-weight: 800;
     }
 
     .transaction-actions {
-      margin-top: 20px;
+      margin-top: 24px;
       display: flex;
       gap: 12px;
       justify-content: flex-end;
     }
 
+    /* Premium Neo-Brutalism Solid Black Buttons */
     .btn-outline,
     .btn-primary {
-      min-height: 42px;
-      padding: 0 18px;
+      min-height: 40px;
+      padding: 0 24px;
       border-radius: 999px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       text-decoration: none;
       font-size: 0.82rem;
-      font-weight: 800;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
       cursor: pointer;
+      transition: all 0.2s;
     }
 
     .btn-outline {
-      color: var(--purple);
-      border: 1px solid rgba(91,63,217,0.35);
+      color: var(--text-main);
+      border: 1px solid var(--text-main);
       background: var(--white);
+    }
+    .btn-outline:hover {
+      background: #fdfdfd;
+      transform: translateY(-1px);
     }
 
     .btn-primary {
       color: var(--white);
-      border: 1px solid var(--purple);
-      background: var(--purple);
-      box-shadow: 0 10px 24px rgba(91,63,217,0.22);
+      border: 1px solid var(--primary-black);
+      background: var(--primary-black);
+    }
+    .btn-primary:hover {
+      background: #222;
+      transform: translateY(-1px);
     }
 
-    .summary-strip {
-      margin-bottom: 28px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .summary-box {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 20px;
-    }
-
-    .summary-box span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.8rem;
-      margin-bottom: 8px;
-    }
-
-    .summary-box strong {
-      font-size: 1.35rem;
-      color: var(--text);
-    }
-
-    /* Detail modal */
+    /* ── MODAL COMPONENT ── */
     .modal-overlay {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.4);
+      background: rgba(0,0,0,0.3);
       z-index: 500;
       align-items: center;
       justify-content: center;
       padding: 24px;
+      backdrop-filter: blur(4px);
     }
 
     .modal-overlay.open { display: flex; }
 
     .modal-box {
       background: var(--white);
-      border-radius: 24px;
+      border-radius: 16px;
       padding: 32px;
       width: 100%;
-      max-width: 520px;
-      max-height: 80vh;
+      max-width: 500px;
+      max-height: 85vh;
       overflow-y: auto;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.15);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.08);
     }
 
     .modal-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
 
     .modal-header h2 {
       font-size: 1.2rem;
-      letter-spacing: -0.03em;
+      font-weight: 800;
+      letter-spacing: -0.02em;
     }
 
     .modal-close {
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-thin);
       background: var(--white);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--muted);
-      font-size: 1rem;
+      color: var(--text-main);
+      font-size: 0.9rem;
+      transition: background 0.2s;
     }
+    .modal-close:hover { background: var(--body-bg); }
 
     .modal-item-row {
       display: flex;
-      gap: 14px;
-      padding: 14px 0;
-      border-bottom: 1px solid var(--border);
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border-thin);
       align-items: center;
     }
-
     .modal-item-row:last-of-type { border-bottom: none; }
 
     .modal-item-row img {
       width: 56px;
       height: 56px;
-      border-radius: 10px;
+      border-radius: 8px;
       object-fit: cover;
-      background: #eee;
-      flex-shrink: 0;
+      border: 1px solid var(--border-thin);
     }
 
     .modal-item-info { flex: 1; }
-
     .modal-item-info h4 {
       font-size: 0.9rem;
+      font-weight: 700;
       margin-bottom: 4px;
     }
-
     .modal-item-info p {
       font-size: 0.8rem;
       color: var(--muted);
@@ -378,18 +401,17 @@
 
     .modal-item-price {
       font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--purple);
-      white-space: nowrap;
+      font-weight: 800;
+      color: var(--text-main);
     }
 
     .modal-totals {
-      margin-top: 16px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-thin);
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
     }
 
     .modal-total-row {
@@ -402,42 +424,40 @@
     .modal-total-row.grand {
       font-size: 0.95rem;
       font-weight: 800;
-      color: var(--text);
-      padding-top: 8px;
-      border-top: 1px solid var(--border);
+      color: var(--text-main);
+      padding-top: 12px;
+      border-top: 1px solid var(--border-thin);
       margin-top: 4px;
     }
-
-    .modal-total-row.grand span:last-child { color: var(--purple); }
+    .modal-total-row.grand span:last-child { color: var(--primary-black); }
 
     .empty-state {
       text-align: center;
-      padding: 72px 24px;
+      padding: 80px 24px;
       color: var(--muted);
     }
-
     .empty-state p {
       font-size: 0.95rem;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
 
+    /* Responsive Adapters */
     @media (max-width: 900px) {
       nav { padding: 0 24px; }
       .nav-links { display: none; }
       .history-page { padding: 104px 24px 56px; }
-      .history-header { flex-direction: column; align-items: flex-start; }
-      .history-filter { justify-content: flex-start; }
+      .history-header { flex-direction: column; align-items: flex-start; gap: 20px; }
       .summary-strip { grid-template-columns: 1fr; }
-      .transaction-body { grid-template-columns: 76px 1fr; }
-      .transaction-price { grid-column: 2; text-align: left; }
+      .transaction-body { grid-template-columns: 76px 1fr; gap: 16px; }
+      .transaction-price { grid-column: 2; text-align: left; margin-top: 8px; }
       .transaction-actions { justify-content: flex-start; }
     }
 
     @media (max-width: 580px) {
       nav { padding: 0 20px; }
       .history-page { padding: 92px 20px 44px; }
-      .transaction-card { padding: 18px; border-radius: 20px; }
-      .transaction-top { flex-direction: column; gap: 12px; }
+      .transaction-card { padding: 20px; }
+      .transaction-top { flex-direction: column; align-items: flex-start; gap: 12px; }
       .transaction-actions { flex-direction: column; }
       .btn-outline, .btn-primary { width: 100%; }
     }
@@ -466,7 +486,7 @@
     <section class="history-header">
       <div class="history-title">
         <h1>History Transaksi</h1>
-        <p>Riwayat pesanan yang pernah kamu buat di Lokana. Kamu bisa melihat status pembayaran, detail produk, dan total transaksi dari halaman ini.</p>
+        <p>Riwayat pesanan terkurasi. Tinjau status konfirmasi, lacak riwayat belanja, dan periksa ringkasan berkas digital pesanan Anda dari satu panel terpusat.</p>
       </div>
       <div class="history-filter" id="filter-pills">
         <button type="button" class="pill active" data-filter="semua">Semua</button>
@@ -492,13 +512,12 @@
     </section>
 
     <section class="transaction-list" id="transaction-list">
-      {{-- diisi JS --}}
+      {{-- Diisi Dinamis oleh JavaScript JavaScript di bawah --}}
     </section>
 
   </div>
 </main>
 
-<!-- Modal detail -->
 <div class="modal-overlay" id="detail-modal" onclick="closeModal(event)">
   <div class="modal-box">
     <div class="modal-header">
@@ -511,7 +530,6 @@
 
 <script src="{{ asset('js/cart.js') }}"></script>
 <script>
-  // ── Dummy fallback data ──────────────────────────────────────────────────────
   const DUMMY_ORDERS = [
     {
       id: 'LKN-2026-001',
@@ -572,7 +590,6 @@
     },
   ];
 
-  // ── Helpers ──────────────────────────────────────────────────────────────────
   function escHtml(str) {
     return String(str ?? '')
       .replace(/&/g,'&amp;').replace(/</g,'&lt;')
@@ -592,7 +609,7 @@
     const s = (status || '').toLowerCase();
     if (s.includes('berhasil')) return 'success';
     if (s.includes('proses'))   return 'process';
-    if (s.includes('batal'))    return 'cancelled';
+    if (s.includes('batal')) return 'cancelled';
     return 'process';
   }
 
@@ -600,18 +617,16 @@
     const s = (status || '').toLowerCase();
     if (s.includes('berhasil')) return 'berhasil';
     if (s.includes('proses'))   return 'diproses';
-    if (s.includes('batal'))    return 'dibatalkan';
+    if (s.includes('batal')) return 'dibatalkan';
     return 'diproses';
   }
 
-  // Thumbnail: tiket pakai placeholder event kalau tidak ada gambar
   function thumbSrc(item) {
     if (item.gambar) return escHtml(item.gambar);
     if (item.kategori === 'tiket') return 'https://i.pinimg.com/736x/8b/3e/2e/8b3e2e1c0e0c9e0f1c2e3e4e5e6e7e8e.jpg';
     return '';
   }
 
-  // Subtitle baris info produk/tiket
   function itemSubtitle(item) {
     if (item.kategori === 'tiket') {
       const parts = [];
@@ -626,7 +641,6 @@
     return escHtml(parts.join(' · '));
   }
 
-  // Preview baris produk untuk card (ambil item pertama + sisa)
   function cardPreview(order) {
     const first = order.items[0];
     const totalItems = order.items.reduce((a, i) => a + i.qty, 0);
@@ -637,7 +651,7 @@
       const parts = [];
       if (first.tier) parts.push(first.tier);
       if (first.tanggalEvent) parts.push(first.tanggalEvent);
-      parts.push(totalItems + (totalItems > 1 ? ' tiket' : ' tiket'));
+      parts.push(totalItems + ' tiket');
       if (extraCount > 0) parts.push('+ ' + extraCount + ' item lainnya');
       infoText = escHtml(parts.join(' · '));
     } else {
@@ -651,7 +665,6 @@
     return { nama: escHtml(first.nama), gambar: thumbSrc(first), info: infoText };
   }
 
-  // ── Render ───────────────────────────────────────────────────────────────────
   function renderOrders(orders) {
     const list = document.getElementById('transaction-list');
 
@@ -665,9 +678,9 @@
     }
 
     list.innerHTML = orders.map((order, idx) => {
-      const preview   = cardPreview(order);
-      const sClass    = statusClass(order.status);
-      const fKey      = filterKey(order.status);
+      const preview = cardPreview(order);
+      const sClass = statusClass(order.status);
+      const fKey = filterKey(order.status);
 
       return `
       <article class="transaction-card" data-filter="${escHtml(fKey)}" data-idx="${idx}">
@@ -692,19 +705,18 @@
         </div>
 
         <div class="transaction-actions">
-          <button type="button" class="btn-outline" onclick="openDetail(${idx})">Lihat Detail</button>
+          <button type="button" class="btn-outline" onclick="openDetail(${idx})">Detail Pesanan</button>
         </div>
       </article>`;
     }).join('');
   }
 
   function updateSummary(orders) {
-    document.getElementById('sum-total').textContent   = orders.length;
+    document.getElementById('sum-total').textContent = orders.length;
     document.getElementById('sum-success').textContent = orders.filter(o => filterKey(o.status) === 'berhasil').length;
     document.getElementById('sum-process').textContent = orders.filter(o => filterKey(o.status) === 'diproses').length;
   }
 
-  // ── Filter ───────────────────────────────────────────────────────────────────
   document.getElementById('filter-pills').addEventListener('click', function(e) {
     const btn = e.target.closest('.pill');
     if (!btn) return;
@@ -719,7 +731,6 @@
     });
   });
 
-  // ── Detail Modal ─────────────────────────────────────────────────────────────
   let _allOrders = [];
 
   function openDetail(idx) {
@@ -757,9 +768,7 @@
     }
   }
 
-  // ── Init ─────────────────────────────────────────────────────────────────────
   (function () {
-    // Gabung: localStorage history (terbaru di depan) + dummy fallback
     const lsHistory = getHistory() || [];
     const allOrders = [...lsHistory, ...DUMMY_ORDERS];
     _allOrders = allOrders;

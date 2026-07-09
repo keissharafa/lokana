@@ -42,14 +42,34 @@
       border-bottom: 1px solid rgba(0,0,0,0.06);
     }
 
+    .nav-brand-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      z-index: 201;
+    }
+
+    .nav-brand-logo {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-brand-logo svg {
+      width: 100%;
+      height: 100%;
+    }
+
     .nav-brand {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 1.15rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: var(--text);
       text-decoration: none;
       letter-spacing: -0.02em;
-      z-index: 201;
     }
 
     .nav-links {
@@ -165,13 +185,16 @@
     /* ── HERO ── */
     .hero {
       position: relative;
-      height: 100vh;
-      min-height: 600px;
+      height: 92vh;
+      min-height: 560px;
+      max-height: 720px;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      align-items: flex-end;
+      justify-content: flex-start;
+      text-align: left;
       overflow: hidden;
+      margin: 96px 32px 32px;
+      border-radius: 28px;
     }
 
     .hero-bg {
@@ -185,86 +208,86 @@
       position: absolute;
       inset: 0;
       background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.25) 0%,
-        rgba(0,0,0,0.15) 40%,
-        rgba(240,230,210,0.55) 100%
+        to top,
+        rgba(0,0,0,0.78) 0%,
+        rgba(0,0,0,0.45) 32%,
+        rgba(0,0,0,0.05) 62%,
+        rgba(0,0,0,0) 80%
       );
     }
 
     .hero-content {
       position: relative;
       z-index: 1;
-      max-width: 580px;
-      padding: 0 24px;
+      max-width: 560px;
+      padding: 0 56px 64px;
     }
 
     .hero-content h1 {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-size: clamp(2.2rem, 4.2vw, 3.1rem);
       font-weight: 800;
       color: var(--white);
-      line-height: 1.1;
+      line-height: 1.12;
       text-shadow: 0 2px 24px rgba(0,0,0,0.3);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
-    /* [REVISI #4] Tagline lebih pendek & emosional, langsung ke bawah h1 */
     .hero-content .hero-tagline {
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.88);
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
       line-height: 1.5;
-      margin-bottom: 36px;
+      margin-bottom: 32px;
       text-shadow: 0 1px 8px rgba(0,0,0,0.2);
     }
 
-    /* [REVISI #1] Hero CTA — primary + secondary button berdampingan */
     .hero-cta {
       display: flex;
-      gap: 12px;
-      justify-content: center;
+      gap: 14px;
+      justify-content: flex-start;
       flex-wrap: wrap;
+      transform: translateY(28px);
     }
 
     .btn-primary {
       display: inline-block;
-      background: var(--purple);
+      background: #14141a;
       color: #fff;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
-      padding: 14px 36px;
+      padding: 17px 34px;
       border-radius: 50px;
       text-decoration: none;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
       transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
-      box-shadow: 0 8px 28px rgba(91,63,217,0.4);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.35);
     }
 
     .btn-primary:hover {
-      background: var(--purple-dark);
+      background: #000;
       transform: translateY(-2px);
-      box-shadow: 0 12px 36px rgba(91,63,217,0.5);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.4);
     }
 
-    /* secondary/ghost button di hero */
     .btn-secondary {
       display: inline-block;
-      background: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.1);
       color: #fff;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
-      padding: 14px 32px;
+      padding: 17px 30px;
       border-radius: 50px;
       text-decoration: none;
-      letter-spacing: 0.02em;
-      border: 1.5px solid rgba(255,255,255,0.5);
+      letter-spacing: 0.01em;
+      border: 1.5px solid rgba(255,255,255,0.55);
       backdrop-filter: blur(4px);
       transition: background 0.25s, transform 0.2s, border-color 0.25s;
     }
 
     .btn-secondary:hover {
-      background: rgba(255,255,255,0.25);
-      border-color: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.2);
+      border-color: rgba(255,255,255,0.9);
       transform: translateY(-2px);
     }
 
@@ -297,7 +320,7 @@
       background: #f3f0ff;
     }
 
-    /* ── [REVISI #3] SOCIAL PROOF STRIP ── */
+    /* ── SOCIAL PROOF STRIP ── */
     .social-proof {
       padding: 32px 48px;
       display: flex;
@@ -376,7 +399,7 @@
       background: var(--white);
       transition: box-shadow 0.25s, transform 0.25s;
       cursor: pointer;
-      position: relative; /* untuk badge positioning */
+      position: relative;
     }
 
     .product-card:hover {
@@ -384,7 +407,6 @@
       transform: translateY(-4px);
     }
 
-    /* [REVISI #2] Badge pojok gambar */
     .product-badge {
       position: absolute;
       top: 12px;
@@ -429,14 +451,12 @@
       font-weight: 600;
       font-size: 0.97rem;
       margin-bottom: 4px;
-      /* [REVISI #5] clamp judul supaya tidak overflow */
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
 
-    /* [REVISI #2] Rating & terjual di bawah nama produk */
     .product-meta {
       display: flex;
       align-items: center;
@@ -462,7 +482,7 @@
       margin-bottom: 14px;
     }
 
-    .product-footer {
+    .product-grid-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -474,7 +494,6 @@
       color: var(--purple);
     }
 
-    /* [REVISI #2] Add-to-cart lebih ekspresif */
     .add-btn {
       display: flex;
       align-items: center;
@@ -539,10 +558,9 @@
       font-size: 0.92rem;
       color: rgba(255,255,255,0.75);
       line-height: 1.7;
-      margin-bottom: 28px; /* [REVISI #4] space untuk CTA */
+      margin-bottom: 28px;
     }
 
-    /* [REVISI #4] Banner CTA button */
     .btn-banner {
       display: inline-block;
       background: transparent;
@@ -635,7 +653,6 @@
       font-weight: 700;
       margin-bottom: 8px;
       line-height: 1.3;
-      /* [REVISI #5] clamp judul artikel */
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -668,12 +685,118 @@
     .read-more:hover::after { transform: translateX(4px); }
 
     /* ── FOOTER ── */
-    footer {
-      padding: 56px 48px 36px;
+    .footer-wrap {
+      background: var(--light-bg);
+      padding: 0 48px 48px;
+    }
+
+    /* floating newsletter card */
+    .newsletter-card {
+      background: var(--purple-dark);
+      border-radius: 24px;
+      padding: 48px 56px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      border-top: 1px solid var(--border);
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .newsletter-card::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 70%);
+      pointer-events: none;
+    }
+
+    .newsletter-copy h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .newsletter-copy p {
+      font-size: 0.86rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.6;
+      max-width: 380px;
+    }
+
+    .newsletter-form-wrap .newsletter-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 0.02em;
+      margin-bottom: 10px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 10px;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      min-width: 0;
+      padding: 13px 18px;
+      border-radius: 50px;
+      border: none;
+      background: rgba(255,255,255,0.1);
+      color: var(--white);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.85rem;
+      outline: none;
+      transition: background 0.2s;
+    }
+
+    .newsletter-form input::placeholder { color: rgba(255,255,255,0.5); }
+    .newsletter-form input:focus { background: rgba(255,255,255,0.16); }
+
+    .newsletter-form button {
+      background: var(--gold);
+      color: #3a2a05;
+      border: none;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 13px 24px;
+      border-radius: 50px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .newsletter-form button:hover {
+      background: #dba94a;
+      transform: translateY(-1px);
+    }
+
+    .newsletter-fineprint {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 10px;
+    }
+
+    .newsletter-fineprint a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: underline;
+    }
+
+    /* footer links section below the card */
+    footer {
+      padding: 56px 0 32px;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 32px;
     }
 
     .footer-brand p {
@@ -691,10 +814,17 @@
       color: var(--purple);
     }
 
+    .footer-col h4 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.03em;
+      margin-bottom: 14px;
+    }
+
     .footer-links {
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
       gap: 10px;
     }
 
@@ -716,32 +846,33 @@
       text-align: center;
     }
 
-    /* ── RESPONSIVE TABLET (≤900px) ── */
+    /* ── RESPONSIVE TABLET ── */
     @media (max-width: 900px) {
       nav { padding: 0 24px; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .mobile-menu { display: flex; }
-      .categories, .recommended, .jurnal, footer { padding-left: 24px; padding-right: 24px; }
+      .categories, .recommended, .jurnal { padding-left: 24px; padding-right: 24px; }
+      .footer-wrap { padding: 0 24px 32px; }
       .banner { padding: 72px 24px; }
       .product-grid, .article-grid { grid-template-columns: 1fr 1fr; }
-      footer { grid-template-columns: 1fr; }
-      .footer-links { align-items: flex-start; }
+      .newsletter-card { grid-template-columns: 1fr; padding: 36px 32px; gap: 28px; }
+      footer { grid-template-columns: 1fr 1fr; }
       .social-proof { padding: 28px 24px; gap: 0; }
       .proof-item { padding: 0 24px; }
     }
 
-    /* ── RESPONSIVE MOBILE (≤580px) ── */
+    /* ── RESPONSIVE MOBILE ── */
     @media (max-width: 580px) {
       nav { padding: 0 20px; }
-      .hero { min-height: 85vh; }
-      .hero-content { padding: 0 20px; }
+      .hero { margin: 80px 16px 16px; min-height: 78vh; border-radius: 22px; }
+      .hero-content { padding: 0 24px 40px; }
       .hero-content h1 { font-size: 1.9rem; line-height: 1.15; }
-      .hero-content .hero-tagline { font-size: 0.88rem; margin-bottom: 28px; }
+      .hero-content .hero-tagline { font-size: 0.88rem; margin-bottom: 24px; }
+      .hero-cta { transform: translateY(20px); }
       .btn-primary { padding: 13px 28px; font-size: 0.87rem; }
       .btn-secondary { padding: 13px 24px; font-size: 0.87rem; }
 
-      /* social proof jadi 2 kolom grid di mobile */
       .social-proof { flex-wrap: wrap; padding: 20px; gap: 0; }
       .proof-item { width: 50%; padding: 12px 0; border-right: none !important; }
       .proof-item:nth-child(1), .proof-item:nth-child(2) { border-bottom: 1px solid var(--border); }
@@ -753,9 +884,14 @@
 
       .recommended { padding: 36px 20px; }
       .jurnal { padding: 40px 20px; }
-      footer { padding: 36px 20px 24px; }
+      .footer-wrap { padding: 0 16px 28px; }
+      .newsletter-card { padding: 28px 22px; border-radius: 20px; }
+      .newsletter-copy h2 { font-size: 1.3rem; }
+      .newsletter-form { flex-direction: column; }
+      .newsletter-form button { width: 100%; }
+      footer { grid-template-columns: 1fr 1fr; padding: 36px 0 20px; gap: 24px; }
+      .footer-brand { grid-column: 1 / -1; }
 
-      /* product card horizontal di mobile */
       .product-grid { grid-template-columns: 1fr; gap: 14px; }
       .product-card { display: flex; flex-direction: row; }
       .product-badge { top: 8px; left: 8px; font-size: 0.6rem; padding: 3px 8px; }
@@ -763,7 +899,6 @@
       .product-info { display: flex; flex-direction: column; justify-content: space-between; padding: 12px 14px; }
       .add-btn { font-size: 0.72rem; padding: 6px 10px; }
 
-      /* article card horizontal di mobile */
       .article-grid { grid-template-columns: 1fr; gap: 14px; }
       .article-card { display: flex; flex-direction: row; }
       .article-img { width: 110px; min-width: 110px; aspect-ratio: 1/1; }
@@ -776,9 +911,23 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a class="nav-brand" href="#">Lokana</a>
+  <a href="#" class="nav-brand-wrapper">
+    <div class="nav-brand-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <path fill="#5B3FD9" d="M43.5 32.8c-.8-2.5-2.2-4.8-4.2-6.5-.6-.5-.5-1.4.2-1.7 2.4-1.1 5.2-1.3 7.7-.6.6.2.9.9.6 1.5l-2.8 6.3c-.3.7-1.1 1-1.5.1z"/>
+        <path fill="#5B3FD9" d="M51.8 31.2l.4-6.9c0-.7.7-1.2 1.4-1 2.6.6 5 2.1 6.7 4.1.4.5.3 1.3-.3 1.6l-6.2 3.1c-.6.3-1.4-.2-1.4-.9z"/>
+        <path fill="#5B3FD9" d="M37.8 36.5c-1.7-1.9-2.9-4.3-3.6-6.8-.2-.7.4-1.3 1.1-1.2 2.6.2 5.1 1.2 7.1 2.9.5.4.5 1.2.1 1.7l-3.5 4.1c-.2.4-1 .4-1.2-.7z"/>
+        <path fill="#5B3FD9" d="M56.8 33.1l4.4-5.3c.5-.6 1.3-.5 1.7.1 1.6 2.1 2.5 4.6 2.5 7.2 0 .7-.7 1.1-1.3.8l-6.4-2.2c-.6-.2-.9-1-.5-1.6z"/>
+        <path fill="#5B3FD9" d="M34.6 42.4c-2.4-.8-4.5-2.2-6.2-4.1-.5-.5-.3-1.4.4-1.5 2.5-.4 5.1.2 7.2 1.6.5.4.6 1.1.2 1.6l-3.3 3c-.4.4-1.1.2-1.3-.6z"/>
+        
+        <path fill="none" stroke="#5B3FD9" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round" d="M12 45.5c12-3.5 20 7 32 7s20-11.5 32-11.5"/>
+        <path fill="none" stroke="#5B3FD9" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" d="M24 53.5c9-2.5 15 4.5 25 4.5s15-8 25-8"/>
+      </svg>
+    </div>
+    <span class="nav-brand">Lokana</span>
+  </a>
+
   <ul class="nav-links">
     <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
     <li><a href="{{ route('produk') }}" class="{{ request()->routeIs('produk') ? 'active' : '' }}">Produk Lokal</a></li>
@@ -800,7 +949,6 @@
   </div>
 </nav>
 
-<!-- MOBILE DRAWER -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
   <a href="{{ route('produk') }}" class="{{ request()->routeIs('produk') ? 'active' : '' }}">Produk Lokal</a>
@@ -812,8 +960,6 @@
   <a href="{{ route('login') }}">Login / Akun Saya</a>
 </div>
 
-<!-- HERO -->
-<!-- [REVISI #1 + #4] Copy lebih emosional, dual CTA -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
@@ -826,7 +972,6 @@
   </div>
 </section>
 
-<!-- CATEGORIES -->
 <div class="categories">
   <a href="#" class="pill">Fashion &amp; Wastra</a>
   <a href="#" class="pill">Kuliner Lokal</a>
@@ -836,7 +981,6 @@
   <a href="#" class="pill">Cerita Budaya</a>
 </div>
 
-<!-- [REVISI #3] SOCIAL PROOF STRIP -->
 <div class="social-proof">
   <div class="proof-item">
     <span class="proof-num">120+</span>
@@ -856,8 +1000,6 @@
   </div>
 </div>
 
-<!-- RECOMMENDED -->
-<!-- [REVISI #2] Badge + rating + add-to-cart lebih ekspresif -->
 <section class="recommended">
   <div class="section-header">
     <h2>Pilihan Untukmu</h2>
@@ -866,7 +1008,7 @@
   <div class="product-grid">
 
     <div class="product-card">
-      <span class="product-badge badge-terlaris">Terlaris</span>
+      <span class="product-badge badge-terlaris">Rekomen</span>
       <img class="product-img" src="https://i.pinimg.com/736x/a9/21/78/a921780c8edefc5cb5741a3cbbfc46c0.jpg" alt="Handmade Sarong Bali"/>
       <div class="product-info">
         <h3>Scarf Endek Bali Handmade</h3>
@@ -877,7 +1019,7 @@
           <span>120 terjual</span>
         </div>
         <p>Dibuat dari kain Endek pilihan dengan motif yang clean minimalis, cocok melengkapi tampilan kasual maupun semi formal.</p>
-        <div class="product-footer">
+        <div class="product-grid-footer">
           <span class="price">Rp 250.000</span>
           <button class="add-btn">+ Keranjang</button>
         </div>
@@ -896,7 +1038,7 @@
           <span>85 terjual</span>
         </div>
         <p>Kopi arabika dari dataran tinggi Bali dengan karakter rasa yang ringan, segar, dan cocok buat seduhan harian.</p>
-        <div class="product-footer">
+        <div class="product-grid-footer">
           <span class="price">Rp 65.000</span>
           <button class="add-btn">+ Keranjang</button>
         </div>
@@ -915,7 +1057,7 @@
           <span>200+ terjual</span>
         </div>
         <p>Aroma natural dengan karakter tropis yang ringan. Cocok untuk relaksasi, diffuser, atau pelengkap rutinitas harian.</p>
-        <div class="product-footer">
+        <div class="product-grid-footer">
           <span class="price">Rp 150.000</span>
           <button class="add-btn">+ Keranjang</button>
         </div>
@@ -925,8 +1067,6 @@
   </div>
 </section>
 
-<!-- BANNER -->
-<!-- [REVISI #4] Tambah CTA "Jadi Mitra Lokana" -->
 <section class="banner">
   <div class="banner-bg"></div>
   <div class="banner-content">
@@ -936,7 +1076,6 @@
   </div>
 </section>
 
-<!-- JURNAL -->
 <section class="jurnal">
   <div class="jurnal-header">
     <h2>Jurnal Lokana</h2>
@@ -977,20 +1116,56 @@
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-brand">
-    <div class="brand-name">Lokana</div>
-    <p>Marketplace produk lokal Bali — dari tangan pengrajin langsung ke tanganmu.</p>
+<div class="footer-wrap">
+
+  <div class="newsletter-card">
+    <div class="newsletter-copy">
+      <h2>Berlangganan Newsletter Kami</h2>
+      <p>Jadi yang pertama tahu produk baru, cerita pengrajin, dan promo spesial dari Lokana.</p>
+    </div>
+    <div class="newsletter-form-wrap">
+      <div class="newsletter-label">Tetap Update</div>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Masukkan email kamu" aria-label="Email"/>
+        <button type="submit">Berlangganan</button>
+      </div>
+      <div class="newsletter-fineprint">Dengan berlangganan, kamu menyetujui <a href="#">Kebijakan Privasi</a> kami.</div>
+    </div>
   </div>
-  <div class="footer-links">
-    <a href="#">Tentang Kami</a>
-    <a href="#">Kebijakan Privasi</a>
-    <a href="#">Kontak</a>
-    <a href="#">Info Pengiriman</a>
-  </div>
-  <div class="footer-bottom">© 2026 Lokana</div>
-</footer>
+
+  <footer>
+    <div class="footer-brand">
+      <div class="brand-name">Lokana</div>
+      <p>Marketplace produk lokal Bali — dari tangan pengrajin langsung ke tanganmu.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Belanja</h4>
+      <div class="footer-links">
+        <a href="#">Produk Lokal</a>
+        <a href="#">Event &amp; Tiket</a>
+        <a href="#">Kategori</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Bantuan</h4>
+      <div class="footer-links">
+        <a href="#">Kontak</a>
+        <a href="#">Info Pengiriman</a>
+        <a href="#">FAQ</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <div class="footer-links">
+        <a href="#">Tentang Kami</a>
+        <a href="#">Kebijakan Privasi</a>
+        <a href="#">Syarat &amp; Ketentuan</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Lokana</div>
+  </footer>
+
+</div>
 
 <script>
   const hamburger = document.getElementById('hamburger');

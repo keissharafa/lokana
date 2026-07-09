@@ -12,6 +12,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
+      /* Palet Warna Asli Lokana */
       --purple: #5B3FD9;
       --purple-dark: #4730B3;
       --gold: #C8963C;
@@ -20,6 +21,8 @@
       --light-bg: #f9f7f4;
       --white: #fff;
       --border: #e8e3dc;
+      --stock-bg: #e8f5e9;
+      --stock-text: #1b5e20;
     }
 
     body {
@@ -29,6 +32,7 @@
       overflow-x: hidden;
     }
 
+    /* ── NAV ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -43,13 +47,33 @@
       border-bottom: 1px solid rgba(0,0,0,0.06);
     }
 
+    .nav-brand-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      z-index: 201;
+    }
+
+    .nav-brand-logo {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-brand-logo svg {
+      width: 100%;
+      height: 100%;
+    }
+
     .nav-brand {
       font-size: 1.15rem;
       font-weight: 700;
       color: var(--text);
       text-decoration: none;
       letter-spacing: -0.02em;
-      z-index: 201;
     }
 
     .nav-links {
@@ -154,27 +178,23 @@
       background: #f5f3ff;
     }
 
-    .mobile-menu-divider {
-      height: 1px;
-      background: var(--border);
-      margin: 8px 28px;
-    }
-
+    /* ── PAGE LAYOUT ── */
     .product-detail-page {
       padding: 112px 48px 72px;
       min-height: 100vh;
       background: var(--light-bg);
     }
 
-    .detail-wrap { max-width: 1120px; margin: 0 auto; }
+    .detail-wrap { max-width: 1080px; margin: 0 auto; }
 
     .breadcrumb {
       display: flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 28px;
-      font-size: 0.82rem;
+      margin-bottom: 32px;
+      font-size: 0.85rem;
       color: var(--muted);
+      justify-content: center;
     }
 
     .breadcrumb a {
@@ -187,15 +207,15 @@
 
     .product-detail-card {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 42px;
-      background: var(--white);
-      border: 1px solid rgba(232, 227, 220, 0.85);
-      border-radius: 24px;
-      padding: 32px;
-      box-shadow: 0 16px 50px rgba(0,0,0,0.045);
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      background: var(--light-bg);
+      padding-bottom: 56px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 56px;
     }
 
+    /* ── GALLERY ── */
     .product-gallery {
       display: flex;
       flex-direction: column;
@@ -204,16 +224,17 @@
 
     .main-product-img {
       width: 100%;
-      aspect-ratio: 4 / 4.4;
+      aspect-ratio: 1 / 1;
       object-fit: cover;
       border-radius: 20px;
       display: block;
       background: #eee;
+      border: 1px solid var(--border);
     }
 
     .thumbnail-row {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 12px;
     }
 
@@ -223,54 +244,65 @@
       object-fit: cover;
       border-radius: 14px;
       border: 1px solid var(--border);
-      background: #eee;
+      cursor: pointer;
+      transition: border-color 0.2s;
     }
 
+    .thumbnail-row img:hover {
+      border-color: var(--purple);
+    }
+
+    /* ── PRODUCT INFO ── */
     .product-detail-info {
-      padding: 8px 0;
+      padding: 12px 0;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+    }
+
+    .meta-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
     }
 
     .product-category {
-      display: inline-block;
-      width: fit-content;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      font-size: 0.8rem;
+      font-weight: 700;
       color: var(--purple);
-      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .stock-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--stock-bg);
+      color: var(--stock-text);
     }
 
     .product-detail-info h1 {
-      font-size: clamp(2rem, 4vw, 3.3rem);
-      line-height: 1.1;
-      font-weight: 800;
-      letter-spacing: -0.05em;
-      margin-bottom: 16px;
-    }
-
-    .product-subtitle {
-      color: var(--muted);
-      line-height: 1.75;
-      font-size: 0.96rem;
-      margin-bottom: 22px;
-      max-width: 520px;
+      font-size: clamp(1.8rem, 3vw, 2.2rem);
+      line-height: 1.2;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
     }
 
     .rating-row {
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
       align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
       color: var(--muted);
-      font-size: 0.86rem;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
-    .rating { color: var(--gold); font-weight: 800; }
+    .stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 2px;}
+    .rating-score { font-weight: 700; color: var(--text); }
 
     .price {
       font-size: 1.8rem;
@@ -279,50 +311,63 @@
       margin-bottom: 24px;
     }
 
-    .product-options {
-      display: grid;
-      gap: 18px;
+    .product-subtitle {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.95rem;
       margin-bottom: 28px;
     }
 
+    /* ── OPTIONS & ACTIONS ── */
+    .option-group { margin-bottom: 28px; }
     .option-group label {
       display: block;
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      color: var(--text);
     }
 
     .option-pills {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
     .option-pill {
-      padding: 10px 16px;
+      padding: 8px 20px;
       border: 1px solid var(--border);
       border-radius: 999px;
       background: var(--white);
       color: var(--muted);
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
       font-family: inherit;
-      transition: all 0.15s;
+      transition: all 0.2s;
     }
 
-    .option-pill.active {
+    .option-pill.active, .option-pill:hover {
       color: var(--purple);
       border-color: var(--purple);
       background: #f3f0ff;
     }
 
-    .quantity-box {
-      display: inline-flex;
-      width: fit-content;
-      align-items: center;
+    .action-row {
+      display: flex;
       gap: 16px;
-      padding: 10px 16px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .quantity-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 110px;
+      height: 48px;
+      padding: 0 16px;
       border: 1px solid var(--border);
       border-radius: 999px;
       background: var(--white);
@@ -331,33 +376,41 @@
     .quantity-box button {
       border: none;
       background: transparent;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-weight: 800;
-      cursor: pointer;
       color: var(--purple);
+      cursor: pointer;
     }
 
-    .action-row {
-      display: flex;
-      gap: 14px;
-      margin-bottom: 30px;
-    }
+    .quantity-box span { font-weight: 700; font-size: 0.95rem; color: var(--text); }
 
-    .btn-primary,
-    .btn-outline {
+    .btn-outline,
+    .btn-primary {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 0 24px;
+      height: 48px;
+      padding: 0 28px;
       border-radius: 999px;
-      font-size: 0.88rem;
-      font-weight: 800;
-      font-family: inherit;
-      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 700;
       cursor: pointer;
-      border: none;
-      transition: background 0.25s, transform 0.2s, box-shadow 0.25s, border-color 0.2s;
+      font-family: inherit;
+      transition: all 0.25s;
+      flex: 1;
+      min-width: 140px;
+    }
+
+    .btn-outline {
+      background: var(--white);
+      color: var(--purple);
+      border: 1px solid rgba(91,63,217,0.35);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--purple);
+      background: #f3f0ff;
+      transform: translateY(-2px);
     }
 
     .btn-primary {
@@ -373,145 +426,240 @@
       box-shadow: 0 14px 34px rgba(91,63,217,0.36);
     }
 
-    .btn-outline {
-      background: var(--white);
+    .product-meta-list {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .product-meta-list strong { color: var(--text); font-weight: 700; margin-right: 8px;}
+
+    /* ── TABS SECTION ── */
+    .tabs-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .tabs-header {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+
+    .tab-link {
+      background: none;
+      border: none;
+      padding: 12px 0;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--muted);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .tab-link.active {
       color: var(--purple);
-      border: 1px solid rgba(91,63,217,0.35);
+      border-bottom-color: var(--purple);
     }
 
-    .btn-outline:hover {
-      border-color: var(--purple);
-      background: #f3f0ff;
-      transform: translateY(-2px);
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.4s ease;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.95rem;
     }
 
-    /* Toast notifikasi */
-    .toast {
-      position: fixed;
-      bottom: 28px;
-      left: 50%;
-      transform: translateX(-50%) translateY(12px);
-      background: #1a1a1a;
-      color: #fff;
-      padding: 12px 22px;
-      border-radius: 999px;
-      font-size: 0.86rem;
-      font-weight: 600;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s, transform 0.25s;
-      z-index: 999;
-      white-space: nowrap;
+    .tab-content.active { display: block; }
+    
+    .tab-content h3 { color: var(--text); font-weight: 700; margin-bottom: 16px; font-size: 1.2rem; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    .info-list {
+    /* ── REVIEW SECTION ── */
+    .review-summary {
       display: grid;
-      gap: 12px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
+      grid-template-columns: auto 1fr;
+      gap: 64px;
+      align-items: center;
+      margin-bottom: 48px;
     }
 
-    .info-item {
+    .review-score { text-align: center; }
+    .review-score h2 { font-size: 3.5rem; font-weight: 700; color: var(--text); line-height: 1; margin-bottom: 8px;}
+    .review-score span { font-size: 0.9rem; color: var(--muted); }
+    .review-score .stars { font-size: 1.2rem; margin: 8px 0;}
+
+    .review-bars { display: flex; flex-direction: column; gap: 10px; }
+    .bar-row { display: flex; align-items: center; gap: 16px; font-size: 0.85rem; font-weight: 600; color: var(--text); }
+    .bar-bg { flex: 1; height: 6px; background: var(--border); border-radius: 999px; overflow: hidden;}
+    .bar-fill { height: 100%; background: var(--gold); border-radius: 999px;}
+
+    .review-list-header {
       display: flex;
       justify-content: space-between;
-      gap: 24px;
-      font-size: 0.84rem;
-      color: var(--muted);
-    }
-
-    .info-item strong { color: var(--text); font-weight: 700; }
-
-    .story-section {
-      max-width: 1120px;
-      margin: 42px auto 0;
-      display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
-      gap: 28px;
-    }
-
-    .story-card,
-    .shipping-card {
-      background: var(--white);
-      border: 1px solid rgba(232, 227, 220, 0.85);
-      border-radius: 22px;
-      padding: 30px;
-    }
-
-    .story-card span,
-    .shipping-card span {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--purple);
-      margin-bottom: 14px;
-    }
-
-    .story-card h2,
-    .shipping-card h2 {
-      font-size: 1.4rem;
-      letter-spacing: -0.03em;
-      margin-bottom: 14px;
-    }
-
-    .story-card p,
-    .shipping-card p {
-      color: var(--muted);
-      line-height: 1.75;
+      align-items: center;
+      margin-bottom: 24px;
       font-size: 0.9rem;
+      color: var(--text);
     }
 
-    footer {
-      padding: 56px 48px 36px;
+    .review-item {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .review-user { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; justify-content: space-between; }
+    .user-info { display: flex; align-items: center; gap: 12px; }
+    .user-info img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; background: #eee; }
+    .user-name { font-weight: 700; color: var(--text); font-size: 0.95rem; }
+    .user-badge { font-size: 0.75rem; color: var(--purple); font-weight: 600; }
+    .review-date { font-size: 0.85rem; color: var(--muted); }
+
+    .review-title { font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .review-text { font-size: 0.9rem; margin-bottom: 16px; }
+    
+    .review-images { display: flex; gap: 12px; }
+    .review-images img { width: 80px; height: 80px; object-fit: cover; border-radius: 12px; border: 1px solid var(--border); }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(12px);
+      background: #1a1a1a; color: #fff; padding: 12px 24px; border-radius: 999px;
+      font-size: 0.86rem; font-weight: 600; opacity: 0; pointer-events: none;
+      transition: opacity 0.25s, transform 0.25s; z-index: 999; white-space: nowrap;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ── NEWSLETTER & NEW FOOTER ── */
+    .newsletter-section {
+      max-width: 1140px;
+      margin: 0 auto 48px;
+      background: var(--purple);
+      border-radius: 24px;
+      padding: 48px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 48px;
-      border-top: 1px solid var(--border);
-      background: var(--white);
+      align-items: center;
+      color: var(--white);
     }
-
-    .footer-brand p {
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-top: 10px;
-      line-height: 1.6;
-      max-width: 260px;
-    }
-
-    .footer-brand .brand-name {
-      font-size: 1.2rem;
+    .newsletter-info h3 {
+      font-size: 1.8rem;
       font-weight: 700;
-      color: var(--purple);
+      margin-bottom: 12px;
     }
-
-    .footer-links {
+    .newsletter-info p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.9);
+    }
+    .newsletter-form-group {
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
-      gap: 10px;
+      gap: 12px;
+    }
+    .newsletter-form-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .newsletter-input-row {
+      display: flex;
+      gap: 12px;
+    }
+    .newsletter-input-row input {
+      flex: 1;
+      padding: 14px 20px;
+      border-radius: 999px;
+      border: none;
+      background: rgba(255,255,255,0.15);
+      color: var(--white);
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+    }
+    .newsletter-input-row input::placeholder {
+      color: rgba(255,255,255,0.6);
+    }
+    .newsletter-input-row button {
+      padding: 0 28px;
+      border-radius: 999px;
+      border: none;
+      background: var(--gold);
+      color: var(--white);
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .newsletter-input-row button:hover {
+      transform: translateY(-2px);
+    }
+    .newsletter-disclaimer {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.7);
+    }
+    .newsletter-disclaimer a {
+      color: var(--white);
+      text-decoration: underline;
     }
 
-    .footer-links a {
-      font-size: 0.82rem;
+    footer {
+      padding: 0 48px 36px;
+      background: var(--light-bg);
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border);
+    }
+    .footer-brand .brand-name {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--purple);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .footer-brand p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 280px;
+    }
+    .footer-col h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .footer-col-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .footer-col-links a {
+      font-size: 0.85rem;
       color: var(--muted);
       text-decoration: none;
       transition: color 0.2s;
     }
-
-    .footer-links a:hover { color: var(--purple); }
-
+    .footer-col-links a:hover {
+      color: var(--purple);
+    }
     .footer-bottom {
-      grid-column: 1 / -1;
-      border-top: 1px solid var(--border);
       padding-top: 24px;
-      font-size: 0.75rem;
-      color: #aaa;
+      font-size: 0.8rem;
+      color: var(--muted);
       text-align: center;
     }
 
@@ -521,22 +669,22 @@
       .hamburger { display: flex; }
       .mobile-menu { display: flex; }
       .product-detail-page { padding: 96px 24px 56px; }
-      .product-detail-card { grid-template-columns: 1fr; padding: 24px; }
-      .story-section { grid-template-columns: 1fr; }
-      footer { grid-template-columns: 1fr; padding-left: 24px; padding-right: 24px; }
-      .footer-links { align-items: flex-start; }
+      .product-detail-card { grid-template-columns: 1fr; gap: 32px; border: none; padding-bottom: 32px;}
+      .review-summary { grid-template-columns: 1fr; gap: 32px; text-align: left; }
+      .review-score { text-align: left; }
+      .newsletter-section { grid-template-columns: 1fr; gap: 32px; padding: 32px; border-radius: 16px; margin: 0 24px 48px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; padding: 0 24px 32px; }
     }
 
     @media (max-width: 580px) {
       nav { padding: 0 20px; }
       .product-detail-page { padding: 88px 20px 44px; }
-      .product-detail-card { padding: 18px; border-radius: 20px; }
-      .main-product-img { aspect-ratio: 1 / 1; }
-      .product-detail-info h1 { font-size: 2rem; }
-      .action-row { flex-direction: column; }
-      .btn-primary, .btn-outline { width: 100%; }
-      .story-card, .shipping-card { padding: 24px; }
-      footer { padding: 36px 20px 24px; }
+      .action-row { flex-direction: column; align-items: stretch; }
+      .quantity-box { width: 100%; justify-content: center; gap: 32px; }
+      .tabs-header { gap: 20px; overflow-x: auto; white-space: nowrap; justify-content: flex-start; padding-bottom: 8px;}
+      .newsletter-input-row { flex-direction: column; }
+      .newsletter-input-row button { padding: 14px 28px; }
+      .footer-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -544,15 +692,27 @@
 <body>
 
 <nav>
-  <a class="nav-brand" href="{{ route('home') }}">Lokana</a>
-
+  <a href="{{ route('home') }}" class="nav-brand-wrapper">
+    <div class="nav-brand-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <path fill="#5B3FD9" d="M43.5 32.8c-.8-2.5-2.2-4.8-4.2-6.5-.6-.5-.5-1.4.2-1.7 2.4-1.1 5.2-1.3 7.7-.6.6.2.9.9.6 1.5l-2.8 6.3c-.3.7-1.1 1-1.5.1z"/>
+        <path fill="#5B3FD9" d="M51.8 31.2l.4-6.9c0-.7.7-1.2 1.4-1 2.6.6 5 2.1 6.7 4.1.4.5.3 1.3-.3 1.6l-6.2 3.1c-.6.3-1.4-.2-1.4-.9z"/>
+        <path fill="#5B3FD9" d="M37.8 36.5c-1.7-1.9-2.9-4.3-3.6-6.8-.2-.7.4-1.3 1.1-1.2 2.6.2 5.1 1.2 7.1 2.9.5.4.5 1.2.1 1.7l-3.5 4.1c-.2.4-1 .4-1.2-.7z"/>
+        <path fill="#5B3FD9" d="M56.8 33.1l4.4-5.3c.5-.6 1.3-.5 1.7.1 1.6 2.1 2.5 4.6 2.5 7.2 0 .7-.7 1.1-1.3.8l-6.4-2.2c-.6-.2-.9-1-.5-1.6z"/>
+        <path fill="#5B3FD9" d="M34.6 42.4c-2.4-.8-4.5-2.2-6.2-4.1-.5-.5-.3-1.4.4-1.5 2.5-.4 5.1.2 7.2 1.6.5.4.6 1.1.2 1.6l-3.3 3c-.4.4-1.1.2-1.3-.6z"/>
+        <path fill="none" stroke="#5B3FD9" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round" d="M12 45.5c12-3.5 20 7 32 7s20-11.5 32-11.5"/>
+        <path fill="none" stroke="#5B3FD9" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" d="M24 53.5c9-2.5 15 4.5 25 4.5s15-8 25-8"/>
+      </svg>
+    </div>
+    <span class="nav-brand">Lokana</span>
+  </a>
   <ul class="nav-links">
     <li><a href="{{ route('home') }}">Home</a></li>
     <li><a href="{{ route('produk') }}" class="active">Produk Lokal</a></li>
     <li><a href="{{ route('event') }}">Event &amp; Tiket</a></li>
     <li><a href="{{ route('artikel') }}">Artikel Lokal</a></li>
+    <li><a href="{{ route('history') }}">History</a></li>
   </ul>
-
   <div class="nav-actions">
     <a href="{{ route('keranjang') }}" aria-label="Keranjang">
       <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
@@ -571,115 +731,224 @@
   <a href="{{ route('produk') }}" class="active">Produk Lokal</a>
   <a href="{{ route('event') }}">Event &amp; Tiket</a>
   <a href="{{ route('artikel') }}">Artikel Lokal</a>
+  <a href="{{ route('history') }}">History</a>
   <div class="mobile-menu-divider"></div>
   <a href="{{ route('keranjang') }}">Keranjang</a>
   <a href="#">Akun Saya</a>
 </div>
 
 <main class="product-detail-page">
-  <div class="detail-wrap">
-    <div class="breadcrumb">
-      <a href="{{ route('home') }}">Home</a>
-      <span>/</span>
-      <a href="{{ route('produk') }}">Produk Lokal</a>
-      <span>/</span>
-      <span>Scarf Endek Bali</span>
-    </div>
+  <div class="breadcrumb">
+    <a href="{{ route('home') }}">Home</a> / 
+    <a href="{{ route('produk') }}">Produk Lokal</a> / 
+    <span>Scarf Endek Bali</span>
+  </div>
 
+  <div class="detail-wrap">
+    
+    <!-- Bagian Atas: Gambar & Info Pembelian -->
     <section class="product-detail-card">
       <div class="product-gallery">
-        <img
-          class="main-product-img"
-          src="https://i.pinimg.com/736x/a9/21/78/a921780c8edefc5cb5741a3cbbfc46c0.jpg"
-          alt="Scarf Endek Bali Handmade"
-        >
+        <img class="main-product-img" src="https://i.pinimg.com/736x/a9/21/78/a921780c8edefc5cb5741a3cbbfc46c0.jpg" alt="Scarf Endek Bali Handmade">
         <div class="thumbnail-row">
-          <img src="https://i.pinimg.com/736x/a9/21/78/a921780c8edefc5cb5741a3cbbfc46c0.jpg" alt="Detail motif scarf endek">
-          <img src="https://i.pinimg.com/1200x/71/64/04/716404ae798ba8c4f8b98762a31b97ca.jpg" alt="Kain Endek Bali">
-          <img src="https://i.pinimg.com/736x/bf/2b/05/bf2b05a0e35df8221f168152b442ce2f.jpg" alt="Produk fashion Bali">
+          <img src="https://i.pinimg.com/736x/a9/21/78/a921780c8edefc5cb5741a3cbbfc46c0.jpg" alt="Thumb 1">
+          <img src="https://i.pinimg.com/1200x/71/64/04/716404ae798ba8c4f8b98762a31b97ca.jpg" alt="Thumb 2">
+          <img src="https://i.pinimg.com/736x/bf/2b/05/bf2b05a0e35df8221f168152b442ce2f.jpg" alt="Thumb 3">
+          <img src="https://i.pinimg.com/736x/a9/84/83/a9848382e0f00383dc3a020ddae17ca0.jpg" alt="Thumb 4">
         </div>
       </div>
 
       <div class="product-detail-info">
-        <span class="product-category">Fashion Lokal</span>
+        <div class="meta-header">
+          <span class="product-category">Fashion Lokal</span>
+          <span class="stock-tag">Stok Tersedia</span>
+        </div>
 
         <h1>Scarf Endek Bali Handmade</h1>
 
-        <p class="product-subtitle">
-          Scarf berbasis kain Endek dengan motif clean dan warna yang mudah dipadukan. Cocok buat kamu yang suka sentuhan lokal, tapi tetap ingin look yang rapi dan modern.
-        </p>
-
         <div class="rating-row">
-          <span class="rating">★ 4.8</span>
-          <span>120 terjual</span>
-          <span>Stok tersedia</span>
+          <span class="stars">★★★★★</span>
+          <span class="rating-score">4.8</span>
+          <span>(245 Review)</span>
         </div>
 
         <div class="price" id="productPrice" data-price="250000">Rp 250.000</div>
 
-        <div class="product-options">
-          <div class="option-group">
-            <label>Pilihan Warna</label>
-            <div class="option-pills" id="colorPills">
-              <button class="option-pill active" type="button" data-warna="Blue Sand">Blue Sand</button>
-              <button class="option-pill" type="button" data-warna="Rose Clay">Rose Clay</button>
-              <button class="option-pill" type="button" data-warna="Natural Cream">Natural Cream</button>
-            </div>
-          </div>
+        <p class="product-subtitle">
+          Scarf berbasis kain Endek dengan motif clean dan warna organik yang mudah dipadukan. Cocok buat kamu yang suka sentuhan lokal, tapi tetap ingin look yang natural dan elegan.
+        </p>
 
-          <div class="option-group">
-            <label>Jumlah</label>
-            <div class="quantity-box">
-              <button type="button" id="decreaseQty">−</button>
-              <span id="quantityValue">1</span>
-              <button type="button" id="increaseQty">+</button>
-            </div>
+        <div class="option-group">
+          <label>Pilihan Warna</label>
+          <div class="option-pills" id="colorPills">
+            <button class="option-pill active" type="button" data-warna="Blue Sand">Blue Sand</button>
+            <button class="option-pill" type="button" data-warna="Rose Clay">Rose Clay</button>
+            <button class="option-pill" type="button" data-warna="Natural Cream">Natural Cream</button>
           </div>
         </div>
 
         <div class="action-row">
+          <div class="quantity-box">
+            <button type="button" id="decreaseQty">−</button>
+            <span id="quantityValue">1</span>
+            <button type="button" id="increaseQty">+</button>
+          </div>
           <button type="button" id="addToCartBtn" class="btn-outline">Tambah ke Keranjang</button>
           <button type="button" id="buyNowBtn" class="btn-primary">Beli Sekarang</button>
         </div>
 
-        <div class="info-list">
-          <div class="info-item"><strong>Kategori</strong><span>Fashion Lokal</span></div>
-          <div class="info-item"><strong>Material</strong><span>Kain Endek pilihan</span></div>
-          <div class="info-item"><strong>Estimasi Kirim</strong><span>2–4 hari kerja</span></div>
-          <div class="info-item"><strong>Asal Produk</strong><span>Bali, Indonesia</span></div>
+        <div class="product-meta-list">
+          <div><strong>SKU :</strong> LKN-EDK-85648</div>
+          <div><strong>Tags :</strong> Wastra, Endek, Scarf, Bali</div>
         </div>
       </div>
     </section>
 
-    <section class="story-section">
-      <div class="story-card">
-        <span>Cerita Produk</span>
-        <h2>Detail lokal yang tetap mudah dipakai</h2>
-        <p>Scarf ini dipilih karena punya karakter visual yang kuat tanpa terasa berlebihan. Motif Endek memberi sentuhan lokal, sementara warna dan ukurannya tetap fleksibel untuk dipakai harian.</p>
+    <!-- Bagian Tengah: Tabs Konten -->
+    <section class="tabs-container">
+      <div class="tabs-header">
+        <button class="tab-link active" data-target="desc-tab">Deskripsi</button>
+        <button class="tab-link" data-target="info-tab">Informasi Tambahan</button>
+        <button class="tab-link" data-target="review-tab">Ulasan</button>
       </div>
-      <div class="shipping-card">
-        <span>Catatan Belanja</span>
-        <h2>Cocok untuk hadiah atau koleksi pribadi</h2>
-        <p>Produk ini pas untuk pengguna yang mencari oleh-oleh Bali dengan fungsi jelas. Bukan hanya pajangan, tapi bisa langsung dipakai untuk styling kasual, semi-formal, atau sebagai aksesori perjalanan.</p>
+
+      <!-- Tab Deskripsi -->
+      <div class="tab-content active" id="desc-tab">
+        <h3>Detail lokal yang tetap mudah dipakai</h3>
+        <p>Scarf ini dipilih karena punya karakter visual yang kuat tanpa terasa berlebihan. Motif Endek memberi sentuhan lokal, sementara warna dan ukurannya tetap fleksibel untuk dipakai harian. Produk ini pas untuk pengguna yang mencari oleh-oleh Bali dengan fungsi jelas. Bukan hanya pajangan, tapi bisa langsung dipakai untuk styling kasual, semi-formal, atau sebagai aksesori perjalanan.</p>
+      </div>
+
+      <!-- Tab Info Tambahan -->
+      <div class="tab-content" id="info-tab">
+        <h3>Spesifikasi Teknis</h3>
+        <ul>
+          <li><strong>Material:</strong> 100% Katun Premium Endek Bali</li>
+          <li><strong>Dimensi:</strong> 180cm x 60cm</li>
+          <li><strong>Perawatan:</strong> Cuci dengan tangan menggunakan deterjen lembut, hindari sinar matahari langsung saat menjemur.</li>
+          <li><strong>Pengiriman:</strong> 2-4 Hari Kerja (Reguler)</li>
+        </ul>
+      </div>
+
+      <!-- Tab Review -->
+      <div class="tab-content" id="review-tab">
+        <div class="review-summary">
+          <div class="review-score">
+            <h2>4.8</h2>
+            <span>dari 5</span>
+            <div class="stars">★★★★★</div>
+            <p>(245 Ulasan)</p>
+          </div>
+          <div class="review-bars">
+            <div class="bar-row">5 Bintang <div class="bar-bg"><div class="bar-fill" style="width: 85%;"></div></div></div>
+            <div class="bar-row">4 Bintang <div class="bar-bg"><div class="bar-fill" style="width: 10%;"></div></div></div>
+            <div class="bar-row">3 Bintang <div class="bar-bg"><div class="bar-fill" style="width: 5%;"></div></div></div>
+            <div class="bar-row">2 Bintang <div class="bar-bg"><div class="bar-fill" style="width: 0%;"></div></div></div>
+            <div class="bar-row">1 Bintang <div class="bar-bg"><div class="bar-fill" style="width: 0%;"></div></div></div>
+          </div>
+        </div>
+
+        <div class="review-list-header">
+          <span><strong>Daftar Ulasan</strong></span>
+          <span>Urutkan : <strong>Terbaru</strong></span>
+        </div>
+
+        <!-- Review Item 1 -->
+        <div class="review-item">
+          <div class="review-user">
+            <div class="user-info">
+              <img src="https://i.pravatar.cc/100?img=5" alt="User">
+              <div>
+                <div class="user-name">Kristin Watson</div>
+                <div class="user-badge">(Pembeli Terverifikasi)</div>
+              </div>
+            </div>
+            <div class="review-date">1 bulan yang lalu</div>
+          </div>
+          <div class="review-title">Sangat memuaskan!</div>
+          <p class="review-text">Warnanya benar-benar senatural yang ada di foto. Kainnya lembut dan gampang banget di-styling. Sangat merepresentasikan kualitas pengrajin lokal Bali!</p>
+          <div class="stars">★★★★★</div>
+          <div class="review-images" style="margin-top: 12px;">
+            <img src="https://i.pinimg.com/736x/bf/2b/05/bf2b05a0e35df8221f168152b442ce2f.jpg" alt="Review Image">
+          </div>
+        </div>
+
+        <!-- Review Item 2 -->
+        <div class="review-item">
+          <div class="review-user">
+            <div class="user-info">
+              <img src="https://i.pravatar.cc/100?img=9" alt="User">
+              <div>
+                <div class="user-name">Jenny Wilson</div>
+                <div class="user-badge">(Pembeli Terverifikasi)</div>
+              </div>
+            </div>
+            <div class="review-date">2 bulan yang lalu</div>
+          </div>
+          <div class="review-title">Cocok untuk dipakai sehari-hari</div>
+          <p class="review-text">Scarf ini jadi andalan saya buat ngantor atau sekadar jalan sore. Motif endeknya tidak norak dan terlihat sangat premium.</p>
+          <div class="stars">★★★★★</div>
+        </div>
       </div>
     </section>
+
   </div>
 </main>
 
 <div class="toast" id="toast"></div>
 
+<!-- NEWSLETTER SECTION -->
+<section class="newsletter-section">
+  <div class="newsletter-info">
+    <h3>Berlangganan Newsletter Kami</h3>
+    <p>Jadi yang pertama tahu produk baru, cerita pengrajin, dan promo spesial dari Lokana.</p>
+  </div>
+  <div class="newsletter-form-group">
+    <label>Tetap Update</label>
+    <div class="newsletter-input-row">
+      <input type="email" placeholder="Masukkan email kamu">
+      <button type="button">Berlangganan</button>
+    </div>
+    <div class="newsletter-disclaimer">
+      Dengan berlangganan, kamu menyetujui <a href="#">Kebijakan Privasi</a> kami.
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER BARU -->
 <footer>
-  <div class="footer-brand">
-    <div class="brand-name">Lokana</div>
-    <p>Marketplace produk lokal Bali — dari tangan pengrajin langsung ke tanganmu.</p>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="brand-name">Lokana</span>
+      <p>Marketplace produk lokal Bali — dari tangan pengrajin langsung ke tanganmu.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Belanja</h4>
+      <div class="footer-col-links">
+        <a href="#">Produk Lokal</a>
+        <a href="#">Event & Tiket</a>
+        <a href="#">Kategori</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Bantuan</h4>
+      <div class="footer-col-links">
+        <a href="#">Kontak</a>
+        <a href="#">Info Pengiriman</a>
+        <a href="#">FAQ</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <div class="footer-col-links">
+        <a href="#">Tentang Kami</a>
+        <a href="#">Kebijakan Privasi</a>
+        <a href="#">Syarat & Ketentuan</a>
+      </div>
+    </div>
   </div>
-  <div class="footer-links">
-    <a href="#">Tentang Kami</a>
-    <a href="#">Kebijakan Privasi</a>
-    <a href="#">Kontak</a>
-    <a href="#">Info Pengiriman</a>
+  <div class="footer-bottom">
+    © 2026 Lokana
   </div>
-  <div class="footer-bottom">© 2026 Lokana</div>
 </footer>
 
 {{-- cart.js harus dimuat sebelum script ini --}}
@@ -723,7 +992,7 @@
   const quantityValueEl = document.getElementById('quantityValue');
 
   function updatePriceDisplay() {
-    productPriceEl.textContent = formatRupiah(BASE_PRICE * quantity);
+    productPriceEl.textContent = 'Rp ' + (BASE_PRICE * quantity).toLocaleString('id-ID');
     quantityValueEl.textContent = quantity;
   }
 
@@ -743,6 +1012,22 @@
       document.querySelectorAll('#colorPills .option-pill').forEach(p => p.classList.remove('active'));
       pill.classList.add('active');
       selectedWarna = pill.dataset.warna;
+    });
+  });
+
+  /* ── Tab Logic ─────────────────────────────────────────── */
+  const tabLinks = document.querySelectorAll('.tab-link');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      // Hapus active dari semua
+      tabLinks.forEach(l => l.classList.remove('active'));
+      tabContents.forEach(c => c.classList.remove('active'));
+      
+      // Tambah active ke target
+      link.classList.add('active');
+      document.getElementById(link.dataset.target).classList.add('active');
     });
   });
 
@@ -773,23 +1058,23 @@
   }
 
   document.getElementById('addToCartBtn').addEventListener('click', () => {
-  addToCart(buildItem());
+    addToCart(buildItem());
 
-  const btn = document.getElementById('addToCartBtn');
-  btn.textContent = '✓ Ditambahkan';
-  btn.disabled = true;
-  btn.style.opacity = '0.6';
-  btn.style.cursor = 'default';
+    const btn = document.getElementById('addToCartBtn');
+    btn.textContent = '✓ Ditambahkan';
+    btn.disabled = true;
+    btn.style.opacity = '0.6';
+    btn.style.cursor = 'default';
 
-  showToast('✓ Scarf Endek ditambahkan ke keranjang');
+    showToast('✓ Scarf Endek ditambahkan ke keranjang');
 
-  setTimeout(() => {
-    btn.textContent = 'Tambah ke Keranjang';
-    btn.disabled = false;
-    btn.style.opacity = '';
-    btn.style.cursor = '';
-  }, 2000);
-});
+    setTimeout(() => {
+      btn.textContent = 'Tambah ke Keranjang';
+      btn.disabled = false;
+      btn.style.opacity = '';
+      btn.style.cursor = '';
+    }, 2000);
+  });
 
   document.getElementById('buyNowBtn').addEventListener('click', () => {
     addToCart(buildItem());
