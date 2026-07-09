@@ -29,6 +29,7 @@
       overflow-x: hidden;
     }
 
+    /* ── NAV (Konsisten dengan Katalog) ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -43,13 +44,34 @@
       border-bottom: 1px solid rgba(0,0,0,0.06);
     }
 
+    .nav-brand-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      z-index: 201;
+    }
+
+    .nav-brand-logo {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-brand-logo svg {
+      width: 100%;
+      height: 100%;
+    }
+
     .nav-brand {
-      font-size: 1.15rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.25rem;
       font-weight: 700;
       color: var(--text);
       text-decoration: none;
       letter-spacing: -0.02em;
-      z-index: 201;
     }
 
     .nav-links {
@@ -162,6 +184,7 @@
       margin: 8px 28px;
     }
 
+    /* ── PAGE LAYOUT ── */
     .catalog-page {
       padding: 128px 48px 72px;
       min-height: 100vh;
@@ -169,7 +192,7 @@
     }
 
     .catalog-header {
-      max-width: 1120px;
+      max-width: 1200px;
       margin: 0 auto 34px;
       display: flex;
       justify-content: space-between;
@@ -227,7 +250,7 @@
     }
 
     .categories {
-      max-width: 1120px;
+      max-width: 1200px;
       margin: 0 auto 38px;
       display: flex;
       gap: 12px;
@@ -256,7 +279,7 @@
     }
 
     .catalog-toolbar {
-      max-width: 1120px;
+      max-width: 1200px;
       margin: 0 auto 24px;
       display: flex;
       align-items: center;
@@ -281,8 +304,9 @@
       outline: none;
     }
 
+    /* ── EVENT GRID & CARDS ── */
     .product-grid {
-      max-width: 1120px;
+      max-width: 1200px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -291,7 +315,7 @@
 
     .product-card {
       border: 1px solid rgba(232, 227, 220, 0.85);
-      border-radius: 18px;
+      border-radius: 22px; /* Disesuaikan dengan Katalog Produk */
       overflow: hidden;
       background: var(--white);
       transition: box-shadow 0.25s, transform 0.25s;
@@ -315,6 +339,7 @@
       padding: 18px 20px 20px;
     }
 
+    /* Struktur Spesifik Event Card dipertahankan */
     .product-category {
       display: inline-block;
       font-size: 0.68rem;
@@ -399,8 +424,9 @@
       transform: scale(1.08);
     }
 
+    /* ── FEATURE BANNER ── */
     .feature-banner {
-      max-width: 1120px;
+      max-width: 1200px;
       margin: 56px auto 0;
       border-radius: 24px;
       overflow: hidden;
@@ -447,13 +473,121 @@
       display: block;
     }
 
-    footer {
-      padding: 56px 48px 36px;
+    /* ── FOOTER BARU (Dari Halaman Produk/Home) ── */
+    .footer-wrap {
+      background: var(--light-bg);
+      padding: 56px 48px 48px;
+    }
+
+    .newsletter-card {
+      background: var(--purple-dark);
+      border-radius: 24px;
+      padding: 48px 56px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      border-top: 1px solid var(--border);
-      background: var(--white);
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .newsletter-card::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 70%);
+      pointer-events: none;
+    }
+
+    .newsletter-copy h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .newsletter-copy p {
+      font-size: 0.86rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.6;
+      max-width: 380px;
+    }
+
+    .newsletter-form-wrap .newsletter-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 0.02em;
+      margin-bottom: 10px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 10px;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      min-width: 0;
+      padding: 13px 18px;
+      border-radius: 50px;
+      border: none;
+      background: rgba(255,255,255,0.1);
+      color: var(--white);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.85rem;
+      outline: none;
+      transition: background 0.2s;
+    }
+
+    .newsletter-form input::placeholder { color: rgba(255,255,255,0.5); }
+    .newsletter-form input:focus { background: rgba(255,255,255,0.16); }
+
+    .newsletter-form button {
+      background: var(--gold);
+      color: #3a2a05;
+      border: none;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 13px 24px;
+      border-radius: 50px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .newsletter-form button:hover {
+      background: #dba94a;
+      transform: translateY(-1px);
+    }
+
+    .newsletter-fineprint {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 10px;
+    }
+
+    .newsletter-fineprint a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: underline;
+    }
+
+    footer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 56px 0 32px;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 32px;
     }
 
     .footer-brand p {
@@ -465,15 +599,23 @@
     }
 
     .footer-brand .brand-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 1.2rem;
       font-weight: 700;
       color: var(--purple);
     }
 
+    .footer-col h4 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.03em;
+      margin-bottom: 14px;
+    }
+
     .footer-links {
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
       gap: 10px;
     }
 
@@ -495,61 +637,30 @@
       text-align: center;
     }
 
+    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav { padding: 0 24px; }
-
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .mobile-menu { display: flex; }
 
-      .catalog-page {
-        padding: 112px 24px 56px;
-      }
+      .catalog-page { padding: 112px 24px 56px; }
+      .catalog-header { flex-direction: column; align-items: flex-start; }
+      .search-box { width: 100%; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .feature-banner { grid-template-columns: 1fr; }
+      .feature-banner img { min-height: 260px; }
 
-      .catalog-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .search-box {
-        width: 100%;
-      }
-
-      .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .feature-banner {
-        grid-template-columns: 1fr;
-      }
-
-      .feature-banner img {
-        min-height: 260px;
-      }
-
-      footer {
-        grid-template-columns: 1fr;
-        padding-left: 24px;
-        padding-right: 24px;
-      }
-
-      .footer-links { align-items: flex-start; }
+      .footer-wrap { padding: 0 24px 32px; }
+      .newsletter-card { grid-template-columns: 1fr; padding: 36px 32px; gap: 28px; }
+      footer { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 580px) {
       nav { padding: 0 20px; }
-
-      .catalog-page {
-        padding: 96px 20px 44px;
-      }
-
-      .catalog-header {
-        margin-bottom: 28px;
-      }
-
-      .catalog-title h1 {
-        font-size: 2rem;
-      }
+      .catalog-page { padding: 96px 20px 44px; }
+      .catalog-header { margin-bottom: 28px; }
+      .catalog-title h1 { font-size: 2rem; }
 
       .categories {
         flex-wrap: nowrap;
@@ -558,58 +669,29 @@
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
       }
-
       .categories::-webkit-scrollbar { display: none; }
+      .pill { flex-shrink: 0; }
 
-      .pill {
-        flex-shrink: 0;
-      }
-
-      .catalog-toolbar {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .product-grid {
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-
-      .product-card {
-        display: flex;
-        flex-direction: row;
-      }
-
-      .product-img {
-        width: 120px;
-        min-width: 120px;
-        aspect-ratio: 1/1;
-      }
-
-      .product-info {
-        padding: 12px 14px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-
+      .catalog-toolbar { align-items: flex-start; flex-direction: column; }
+      .product-grid { grid-template-columns: 1fr; gap: 14px; }
+      .product-card { display: flex; flex-direction: row; }
+      
+      .product-img { width: 120px; min-width: 120px; aspect-ratio: 1/1; border-radius: 22px 0 0 22px;}
+      .product-info { padding: 12px 14px; display: flex; flex-direction: column; justify-content: space-between; }
       .product-info p,
       .product-meta,
-      .product-category {
-        display: none;
-      }
+      .product-category { display: none; }
 
-      .feature-banner-content {
-        padding: 28px;
-      }
+      .feature-banner-content { padding: 28px; }
+      .feature-banner img { min-height: 220px; }
 
-      .feature-banner img {
-        min-height: 220px;
-      }
-
-      footer {
-        padding: 36px 20px 24px;
-      }
+      .footer-wrap { padding: 0 16px 28px; }
+      .newsletter-card { padding: 28px 22px; border-radius: 20px; }
+      .newsletter-copy h2 { font-size: 1.3rem; }
+      .newsletter-form { flex-direction: column; }
+      .newsletter-form button { width: 100%; }
+      footer { grid-template-columns: 1fr 1fr; padding: 36px 0 20px; gap: 24px; }
+      .footer-brand { grid-column: 1 / -1; }
     }
   </style>
 </head>
@@ -618,7 +700,20 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-brand" href="{{ route('home') }}">Lokana</a>
+  <a href="{{ route('home') }}" class="nav-brand-wrapper">
+    <div class="nav-brand-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <path fill="#5B3FD9" d="M43.5 32.8c-.8-2.5-2.2-4.8-4.2-6.5-.6-.5-.5-1.4.2-1.7 2.4-1.1 5.2-1.3 7.7-.6.6.2.9.9.6 1.5l-2.8 6.3c-.3.7-1.1 1-1.5.1z"/>
+        <path fill="#5B3FD9" d="M51.8 31.2l.4-6.9c0-.7.7-1.2 1.4-1 2.6.6 5 2.1 6.7 4.1.4.5.3 1.3-.3 1.6l-6.2 3.1c-.6.3-1.4-.2-1.4-.9z"/>
+        <path fill="#5B3FD9" d="M37.8 36.5c-1.7-1.9-2.9-4.3-3.6-6.8-.2-.7.4-1.3 1.1-1.2 2.6.2 5.1 1.2 7.1 2.9.5.4.5 1.2.1 1.7l-3.5 4.1c-.2.4-1 .4-1.2-.7z"/>
+        <path fill="#5B3FD9" d="M56.8 33.1l4.4-5.3c.5-.6 1.3-.5 1.7.1 1.6 2.1 2.5 4.6 2.5 7.2 0 .7-.7 1.1-1.3.8l-6.4-2.2c-.6-.2-.9-1-.5-1.6z"/>
+        <path fill="#5B3FD9" d="M34.6 42.4c-2.4-.8-4.5-2.2-6.2-4.1-.5-.5-.3-1.4.4-1.5 2.5-.4 5.1.2 7.2 1.6.5.4.6 1.1.2 1.6l-3.3 3c-.4.4-1.1.2-1.3-.6z"/>
+        <path fill="none" stroke="#5B3FD9" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round" d="M12 45.5c12-3.5 20 7 32 7s20-11.5 32-11.5"/>
+        <path fill="none" stroke="#5B3FD9" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" d="M24 53.5c9-2.5 15 4.5 25 4.5s15-8 25-8"/>
+      </svg>
+    </div>
+    <span class="nav-brand">Lokana</span>
+  </a>
 
   <ul class="nav-links">
     <li><a href="{{ route('home') }}">Home</a></li>
@@ -825,23 +920,54 @@
 </main>
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-brand">
-    <div class="brand-name">Lokana</div>
-    <p>Marketplace produk lokal Bali — dari tangan pengrajin langsung ke tanganmu.</p>
+<div class="footer-wrap">
+  <div class="newsletter-card">
+    <div class="newsletter-copy">
+      <h2>Berlangganan Newsletter Kami</h2>
+      <p>Jadi yang pertama tahu produk baru, cerita pengrajin, dan promo spesial dari Lokana.</p>
+    </div>
+    <div class="newsletter-form-wrap">
+      <div class="newsletter-label">Tetap Update</div>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Masukkan email kamu" aria-label="Email"/>
+        <button type="submit">Berlangganan</button>
+      </div>
+      <div class="newsletter-fineprint">Dengan berlangganan, kamu menyetujui <a href="#">Kebijakan Privasi</a> kami.</div>
+    </div>
   </div>
 
-  <div class="footer-links">
-    <a href="#">Tentang Kami</a>
-    <a href="#">Kebijakan Privasi</a>
-    <a href="#">Kontak</a>
-    <a href="#">Info Pengiriman</a>
-  </div>
-
-  <div class="footer-bottom">
-    © 2026 Lokana
-  </div>
-</footer>
+  <footer>
+    <div class="footer-brand">
+      <div class="brand-name">Lokana</div>
+      <p>Marketplace produk lokal Bali — dari tangan pengrajin langsung ke tanganmu.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Belanja</h4>
+      <div class="footer-links">
+        <a href="#">Produk Lokal</a>
+        <a href="#">Event &amp; Tiket</a>
+        <a href="#">Kategori</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Bantuan</h4>
+      <div class="footer-links">
+        <a href="#">Kontak</a>
+        <a href="#">Info Pengiriman</a>
+        <a href="#">FAQ</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <div class="footer-links">
+        <a href="#">Tentang Kami</a>
+        <a href="#">Kebijakan Privasi</a>
+        <a href="#">Syarat &amp; Ketentuan</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Lokana</div>
+  </footer>
+</div>
 
 <script>
   const hamburger = document.getElementById('hamburger');

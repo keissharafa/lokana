@@ -1053,7 +1053,7 @@
 <main class="catalog-page">
   <section class="catalog-header">
     <div class="catalog-title">
-      <h1>Sentuhan Bali untuk Ruang dan Dirimu</h1>
+      <h1>Katalog Produk</h1>
       <p>
 Membawa esensi Bali ke dalam keseharian kini lebih dekat. Temukan ragam produk terkurasi—dari helai benang wastra penuh makna hingga aroma self-care yang menenangkan—semuanya lahir dari dedikasi terbaik brand lokal dan UMKM pilihan    </div>
 
