@@ -1,7 +1,6 @@
 /**
  * cart.js — Lokana Cart System
  * Mengelola keranjang belanja (produk fisik & tiket event) menggunakan localStorage.
- * Tidak menggunakan database — sesuai arsitektur project Lokana.
  */
 
 const CART_KEY = 'lokana_cart';
